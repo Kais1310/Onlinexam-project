@@ -1,0 +1,127 @@
+body{
+	background-repeat:no-repeat;
+	height:1600px;
+	font-family: 'Quicksand', sans-serif; ; 
+   
+}
+  h1{
+	 font-family: 'Quicksand', sans-serif; ; 
+   font-weight: bold;
+   
+   font-weight: 500;
+
+   margin-top: 1%;
+   color: rgba(102, 141, 155, 1);
+   font-size: 35px;
+   margin-left:20.5%;
+
+}
+
+.formule{
+	max-width: 	1000px;
+	margin: auto;
+	font-family: 'Quicksand', sans-serif; ; 
+   font-weight: bold;
+   font-weight: 400;
+	 text-align: center;
+	 font-size: 18px;
+margin-top: -4%;
+
+
+    }   
+    	
+    form input{
+   width:300px;
+       outline: none;
+    margin:1.5%;
+        background-color:transparent ;
+    color:black;
+    font-size: 15px;
+    padding: 15px;
+   
+    border: 0.2px rgba(0,0,0,0.2) solid;
+    border-radius:3px;
+    }
+    input:hover{
+    	background-color: transparent;
+    	border-color: rgba(102, 141, 155, 1);
+    	border-width: 1px;
+    }
+    label{
+    	float: left;
+    	margin-left: 2%;
+    }
+   label b{
+    	color: rgba(255, 13, 0, 1);
+    	font-size: 20px;
+    	font-weight: bold;
+    }
+    
+    strong{
+    	font-size: 18px;
+    	float: left;
+    	font-weight: 400;
+
+    }
+.role{
+width: 200px;
+font-size: 15px;
+padding: 13px ;
+border:0.2px rgba(0,0,0,0.2) solid;
+border-radius: 3px;
+
+    }
+    .role::after{
+    	cursor: pointer;
+    	color: #ffff;
+
+    }
+    option{
+    	font-size: 18px;
+    	font-family: 'Quicksand', sans-serif;
+    		}
+
+    .role:hover{
+    	background-color: transparent;
+    	border-color: rgba(102, 141, 155, 1);
+    	border-width: 1px;
+    }
+    .part1{
+    	
+    	float: left;
+    	margin-top: 8%;
+    	margin-left:3%;
+
+    }
+.part2{
+    	
+    	float: left;
+    	margin-top: 9%;
+    	margin-left:20%;
+
+    }
+    .btn{
+    	transition-duration: 0.1s;
+     width: 50%;
+    border-radius: 40px;
+    background-color: rgba(102, 141, 155, 1);
+    padding: 10px;
+    font-weight: bold;
+    outline: none;
+    cursor:pointer;color: #ffff;
+    margin: 15px 15px 0px 5px;
+    border: none;
+text-align: center;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  margin-left: 14%;
+  font-size: 18px;
+
+    }
+    .btn:hover{
+    	background-color:rgba(0, 32, 58, 0.8);
+    color: white;
+    }
+    .next{
+    margin-top:47%;
+    }

@@ -31,7 +31,7 @@
 	<header>
 		<nav class="navbar navbar-expand-md navbar-dark" style="background-color: #668d9b;">
 			<div>
-				<h2 style="color: white;"> Account Management </h2>
+				<h2 style="color: white;"> Account Management page </h2>
 			</div>
 
 			<ul class="navbar-nav">

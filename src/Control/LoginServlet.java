@@ -34,19 +34,29 @@ public class LoginServlet extends HttpServlet {
 		
 			if (request.getSession().getAttribute("student") != null) {
 		
-			RequestDispatcher dispatcher = request.getRequestDispatcher("Home.Student.jsp");
-			dispatcher.include(request, response);
-			}else if (request.getSession().getAttribute("teacher") != null) {
+			 RequestDispatcher dispatcher = request.getRequestDispatcher("Home.Student.jsp");
+		     dispatcher.include(request, response);
+		     
+			   }else if(request.getSession().getAttribute("professor")!=null) {
+					  
+				   RequestDispatcher dispatcher =request.getRequestDispatcher("Home.Professor.jsp");
+				   dispatcher.include(request, response);
+			       
+			       }else if (request.getSession().getAttribute("teacher") != null) {
 				
-				RequestDispatcher dispatcher = request.getRequestDispatcher("Home.Teacher.jsp");
-				dispatcher.include(request, response);
-				}else if(request.getSession().getAttribute("admin")!=null) {
-					RequestDispatcher dispatcher =request.getRequestDispatcher("Home.Admin.jsp");
-					dispatcher.include(request, response);
-				}else {
-					RequestDispatcher dispatcher = request.getRequestDispatcher("Login.Forme.jsp");
-					dispatcher.include(request, response);
-				}
+				    RequestDispatcher dispatcher = request.getRequestDispatcher("Home.Teacher.jsp");
+				    dispatcher.include(request, response);
+				    
+				   }else if(request.getSession().getAttribute("admin")!=null) {
+					  
+					   RequestDispatcher dispatcher =request.getRequestDispatcher("Home.Admin.jsp");
+					   dispatcher.include(request, response);
+				       
+				       }else {
+					     
+				    	   RequestDispatcher dispatcher = request.getRequestDispatcher("Login.Forme.jsp");
+					       dispatcher.include(request, response);
+				       }
 	}
 	
 
@@ -63,7 +73,7 @@ public class LoginServlet extends HttpServlet {
 		
        
     	   
-   		try {
+   	try {
 
    			Student student = dao.checkLoginStudent(username, password);
    			
@@ -81,46 +91,62 @@ public class LoginServlet extends HttpServlet {
    			}else {
    				
    			
-   				Teacher teacher = dao.checkLoginTeacher(username, password);
+   				Professor professor = dao.checkLoginProfessor(username, password);
    				
-   				if (teacher != null) {
+   				if (professor != null) {
    	   				
    	   				
    	   				HttpSession session = request.getSession();
-   	   				session.setAttribute("teacher", teacher);
+   	   				session.setAttribute("professor", professor);
 
-   	   				dispatcher = request.getRequestDispatcher("Home.Teacher.jsp");
+   	   				dispatcher = request.getRequestDispatcher("Home.Professor.jsp");
    	   				dispatcher.forward(request, response);
    				
 
    	   			} else {
    	   				
    	    			
-   	   				Admin admin = dao.checkLoginAdmin(username, password);
+   	   				Teacher teacher = dao.checkLoginTeacher(username, password);
    	   				
-   	   				if (admin != null) {
+   	   				    if (teacher != null) {
    	   	   				
    	   	   				
-   	   	   				HttpSession session = request.getSession();
-   	   	   				session.setAttribute("admin", admin);
+   	   	   				     HttpSession session = request.getSession();
+   	   	   				     session.setAttribute("teacher", teacher);
 
-   	   	   				dispatcher = request.getRequestDispatcher("Home.Admin.jsp");
-   	   	   				dispatcher.forward(request, response);
+   	   	   				     dispatcher = request.getRequestDispatcher("Home.Teacher.jsp");
+   	   	   				     dispatcher.forward(request, response);
+   	   				
 
-   	   	   			} else {
+   	   	   			     } else {
+   	   				
+   	    			
+   	   			            	Admin admin = dao.checkLoginAdmin(username, password);
+   	   				
+   	   				           if (admin != null) {
+   	   	   				
+   	   	   				
+   	   	   			        	HttpSession session = request.getSession();
+   	   	   			        	session.setAttribute("admin", admin);
+
+   	   	   				        dispatcher = request.getRequestDispatcher("Home.Admin.jsp");
+   	   	   				        dispatcher.forward(request, response);
+
+   	   	   			           } else {
    	   			
-   				dispatcher = request.getRequestDispatcher("Login.Forme.jsp");
-   				dispatcher.include(request, response);
-   				    }
+   				                   dispatcher = request.getRequestDispatcher("Login.Forme.jsp");
+   				                   dispatcher.include(request, response);
+   				               }
 
-   		}
-   		}
-   		}catch (InstantiationException | IllegalAccessException e) {
+   		                }
+   		     }
+   	     }
+   	  }catch (InstantiationException | IllegalAccessException e) {
    			e.printStackTrace();
-   		}
+   	  }
    		
 		
       
-	} 	
+  } 	
 }
    		

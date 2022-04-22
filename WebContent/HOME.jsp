@@ -58,7 +58,7 @@
  <div class="card">
   <div class="box1 box">
     <h3><i class=" fa fa-fw fa-edit"></i></h3>
-     <h2>EVERYTHING YOU NEED</h2>
+     <h2>EVERYTHING YOU NEED.</h2>
    <p>Create comprehensive exams with powerful tools that are easy to use and quick to apply.</p></div>
    <div class="bg"></div>
  </div>

@@ -39,13 +39,14 @@ public class Create_Student extends HttpServlet {
         String email = request.getParameter("email");
         String level = request.getParameter("level");
         String speciality = request.getParameter("speciality");
+        String department = request.getParameter("department");
 
         int group = Integer.parseInt(request.getParameter("group"));
 		
         String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		
-		Student student = new Student( firstname,  lastname,  level,  speciality,  group,  email, username,  password) ;
+		Student student = new Student( firstname,  lastname,  level,  speciality,department , group,  email, username,  password) ;
 		
 			
 			
@@ -72,5 +73,3 @@ public class Create_Student extends HttpServlet {
 
 	}
 }
-
-

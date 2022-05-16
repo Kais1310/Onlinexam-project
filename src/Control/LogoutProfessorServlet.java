@@ -25,7 +25,7 @@ public class LogoutProfessorServlet extends HttpServlet {
 		
 HttpSession session= request.getSession(false);
 		
-		session.removeAttribute("professor");
+		session.removeAttribute("doctor");
 		session.invalidate();
 		
 		RequestDispatcher dispatcher= request.getRequestDispatcher("Login.Forme.jsp");

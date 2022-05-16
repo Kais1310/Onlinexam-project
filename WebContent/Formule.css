@@ -18,14 +18,11 @@ body{
 }
 
 .formule{
-	max-width: 	1000px;
-	margin: auto;
-	font-family: 'Quicksand', sans-serif; ; 
-   font-weight: bold;
-   font-weight: 400;
-	 text-align: center;
-	 font-size: 18px;
-margin-top: -4%;
+	 width: 320px;
+    height: 650px;
+    margin: auto;
+    background-color: white;
+    border-radius: 3px;
 
 
     }   

@@ -4,47 +4,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>login</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link href="https://fonts.googleapis.com/css?family=Crimson+Text|Work+Sans:400,700" rel="stylesheet">
+  <title>homepage</title>
+  <link rel="stylesheet" type="text/css" href="HOME.css">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://fonts.googleapis.com/css?family=Crimson+Text|Work+Sans:400,700" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
-
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
  
-<style><%@include file="login.css"%></style>
+
 
 </head>
 <body>
-<div class="head">
-   <div class="navbar">
-<b><img src="pic/log6.PNG"></b>
-    <a href="HOME.jsp"><i><i class="fa fa-fw fa-home"></i></i>Home</a>
+  <!----hero Section start---->
 
-    <a href="Home.admin"><i class=" fa fa-fw fa-question"></i>How it works</a>
- <div class="dropdown-content">
-      <a href="http://localhost:8080/GestionPresence/Add_Ens_Servlet">Add</a>
-      <a href="http://localhost:8080/GestionPresence/Update_Ens_Servlet">Update</a>
-      <a href="Delete.User.jsp">Delete</a>
-    </div>
-  
-    <a href="Home.admin"><i class="fa fa-fw fa-users"></i>About</a>
-     <div class="dropdown-content">
-      <a href="http://localhost:8080/GestionPresence/Add_Ens_Servlet">Add</a>
-      <a href="http://localhost:8080/GestionPresence/Update_Ens_Servlet">Update</a>
-      <a href="Delete.User.jsp">Delete</a>
-   </div> 
+  <div class="hero">
+    <header id="header">
+     <h2 class="logo">e<span>_Exam</span></h2>
+      <ul id="menu">
+        <li><a href="HOME.jsp">Home</a></li>
+        <li><a href="AboutUs.jsp">About Us</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Skills</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+   
+</header>
+<script> 
+ var header=document.getElementById("header");
+ var menu=document.getElementById("menu");
+  window.onscroll=function(){
+    if (window.pageYOffset >=menu.offsetTop) {
+      header.classList.add("sticky");
+    }else
+    {
+     header.classList.remove("sticky");
+    }
+  }
+   
+  </script>
  
-
-     <div class="content">
-      <h1> Welcome to e_Exam <br> A secure system <br>for online exams</h1>
+    <div class="content">
+           <h1> Welcome to e_Exam <br> A secure system <br>for online exams</h1>
         <p>Take your secure digital exams online confidence</p><p>  with exam software designed by team of students</p>
         <p>  who know the realities of all the power and</p>  <p> features you need to create exams </p> <p>for your students according to your needs.</p>  
-       </div>
-       </div>
-        <div class="photo">
 
- <div class="login"> 
+    </div>
+    <div class="login"> 
 <form name="Login" action="LoginServlet" method="post"> 
 <h1>Let Get Started</h1> 
   
@@ -65,126 +74,113 @@
  
  
  </div> 
-
-
-          <img src="pic/2.jpg"> 
-         
-        </div>
-      </div>  
-        
-
-
-<div class="comment"> 
-  <div class="quotes">
-
- <div class="card">
-  <div class="box1 box">
-    <h3><i class=" fa fa-fw fa-edit"></i></h3>
-     <h2>EVERYTHING YOU NEED</h2>
-   <p>Create comprehensive exams with powerful tools that are easy to use and quick to apply.</p></div>
-   
- </div>
-
-
-  <div class="card">
-  <div class="box1 box">
-    <h3><i class=" fa fa-fw fa-laptop"></i></h3>
-    <h2>KEEP IT SIMPLE</h2>
-    <p>Take exams confidently and under control with our intuitive software that makes everything technical easy.</p>
-  </div> 
-
   </div>
 
-<div class="card">
-  <div class="box1 box">
-    <h3><i class=" fa fa-fw fa-user"></i></h3>
-     <h2>EMPOWER  STUDENTS</h2>
-    <p>Customize exams to meet each student's individual needs and let their knowledge shine.</p>
-  </div> 
- 
-  </div>
-</div>
-</div>
-
-
-
-<div class="comment2">
-  <h2>Security</h2>
-  <p> Our own  software guides candidates through the exam process,<br> ensuring their experience is comfortable, stress-free and reliable.<br>
+  <!----About section start---->
+  <section class="about">
+    <div class="main">
+      <img src="pic/securite.jpg">
+      <div class="about-text">
+        <h2>Securty</h2>
+        <h5>in <span>our system</span></h5>
+         <p> Our own  software guides candidates through the exam process, ensuring their experience is comfortable, stress-free and reliable.
 
 Applicants are identified by an online proctor through a secure identification process.<br> They are monitored throughout the process to ensure the testing environment meets the highest security standards,<br> while our award-winning security software, ExamShield, locks down their device.<br>
 
 All e-Exam invigilators receive specialist training and are frequently monitored to the highest standards.</p>
+       
+      </div>
+    </div>
+  </section>
 
+  <!-----service section start----------->
+  <div class="service">
+    <div class="title">
+      
+    </div>
 
-</div>
+    <div class="box">
+      <div class="card">
+        <i class="fas fa-edit"></i>
+        <h5>EVERYTHING YOU NEED.</h5>
+        <div class="pra">
+          <p>Create comprehensive exams with powerful tools that are easy to use and quick to apply</p>
 
+          <p style="text-align: center;">
+           
+          </p>
+        </div>
+      </div>
 
-<div class="avantage">
-  <h4>Main Advantages</h4>
-  <div class="paper">
-  <h5>Paper saving</h5>
-  <p>
-You never need to print your exam to hand <br>it out to your students.<br> Paper savings = tree savings = everyone is happy.</p><img src="pic/p5.jpg">
-</div>
+      <div class="card">
+        <i class="fas fa-laptop"></i>
+        <h5>KEEP IT SIMPLE</h5>
+        <div class="pra">
+          <p>Take exams confidently and under control with our intuitive software that makes everything technical easy.</p>
 
-<div class="time">
-  <h5>time saving</h5>
-  <img src="pic/t3.jpg">
-<p>
-For teachers distributing the exam <br>
-does not take time.<br>
-Also students do not need to gather <br>in a class to take the exam</p>
+          <p style="text-align: center;">
+            
+          </p>
+        </div>
+      </div>
 
-</div>
+      <div class="card">
+        <i class="far fa-user"></i>
+        <h5>EMPOWER  STUDENTS</h5>
+        <div class="pra">
+          <p>Customize exams to meet each student's individual needs and let their knowledge shine.</p>
 
-<div class="money">
- <h5>Money saving</h5>
-<p>No more need to buy paper: sending<br> emails  is free.<br>Students do not have to travel to a specific<br> location to take the exam;<br> Even students living in isolated places can  <br>take it.
-   They can do it within the time you <br>specify from their own device.</p><img src="pic/m3.jpg">
-</div>
-</div>
-
-<div class="fin">
-  <div class="logo">
-    <img src="pic/log6.PNG">
-
+          <p style="text-align: center;">
+            
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
 
-<div class="menu">
-  <h6>Menu</h6>
-  <p>
-  <a href="Home.Admin.jsp">Home</a><br>
+  <!------Contact Me------>
+  <div class="contact-me">
+     <h7>Main advantages</h7>
+     <h8>Paper saving</h8>
+<div class="text"><p>You never need to print your exam to hand it out to your students. Paper savings = tree savings = everyone is happy.</p><img src="pic/3.jpg"><br>
+<span class="moreText">
+<h8>Time saving</h8><br><br>
+<p>For teachers distributing the exam <br>does not take time.
+Also students do not need to gather in a <br>class to take the exam</p><img src="pic/t.jpg">
+<br>
+<h8>Money saving</h8>
+<p>No more need to buy paper: sending emails  is free.<br>Students do not have to travel to a specific location to take the exam;<br> Even students living in isolated places can take it.
+   They can do it within the time you</p> <img src="pic/m.jpg"></span></div>
+   <button class="read-more-btn">Read More</button>
 
-    <a href="Home.admin">How it works</a><br>
-<a href="Home.admin">About</a></p>
+   <script>
+     const readMoreBtn = document.querySelector(".read-more-btn");
+const text = document.querySelector(".text");
 
-
+readMoreBtn.addEventListener("click", (e) => {
+  text.classList.toggle("show-more");
+  if (readMoreBtn.innerText === "Read More") {
+    readMoreBtn.innerText = "Read Less";
+  } else {
+    readMoreBtn.innerText = "Read More";
+  }
+});
+   </script>
+ 
 </div>
+    
+ 
 
-<div class="links">
-     <h6>Related Link</h6>
-   <a href="www.univ-constantine2.dz">www.univ-constantine2.dz</a><br>
-   <a href="https://elearning.univ-constantine2.dz/">elearning.univ-constantine2.dz</a>
-   
-</div>
+ 
+  <footer>
+    <p>Univerité Abd Elhamid Mehri</p>
+    <p>For more informations click here</p>
+    <div class="social">
+      <a href="https://www.facebook.com/univCns2"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.univ-constantine2.dz/"><i class="fab fa-dribbble"></i></a>
+    <p class="end">CopyRight &copy</p>
+    </div>
+  </footer>
 
-<div class="creators">
-
-  
-    <h6>Creators</h6><p>
-    kais.khalfa@univ-constantine2.dz  <br>
-    hamida.rim@univ-constantine2.dz<br>
-    rihab.tsaloub@univ-constantine2.dz
-  
-  </p>
-</div>
-</div>
-
-<div class="copyright">
-  <h7>©Copyright</h7>
-<a href="#"><i class="fa fa-fw fa-angle-double-up"></i></a>
-
-</div>
 </body>
 </html>

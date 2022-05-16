@@ -14,8 +14,7 @@ import javax.servlet.http.HttpSession;
 import Model.Admin;
 import Model.Student;
 import Model.Teacher;
-import Model.Professor;
-import Model.Monitor;
+import Model.Doctor;
 import Model.DAO;
 
 
@@ -37,9 +36,9 @@ public class LoginServlet extends HttpServlet {
 			 RequestDispatcher dispatcher = request.getRequestDispatcher("Home.Student.jsp");
 		     dispatcher.include(request, response);
 		     
-			   }else if(request.getSession().getAttribute("professor")!=null) {
+			   }else if(request.getSession().getAttribute("doctor")!=null) {
 					  
-				   RequestDispatcher dispatcher =request.getRequestDispatcher("Home.Professor.jsp");
+				   RequestDispatcher dispatcher =request.getRequestDispatcher("Home.Doctor.jsp");
 				   dispatcher.include(request, response);
 			       
 			       }else if (request.getSession().getAttribute("teacher") != null) {
@@ -63,7 +62,7 @@ public class LoginServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		RequestDispatcher dispatcher;
+		
 		
         String username = request.getParameter("username");
 		String password = request.getParameter("password");
@@ -71,41 +70,43 @@ public class LoginServlet extends HttpServlet {
 
 		DAO dao = new DAO();
 		
-       
+       // you need to check username and password in account of all your actors 
     	   
    	try {
-
+          // verify if username and password are for Student account
+   		
    			Student student = dao.checkLoginStudent(username, password);
    			
 
    			if (student != null) {
    				
-   				
    				HttpSession session = request.getSession();
    				session.setAttribute("student", student);
 
-   				dispatcher = request.getRequestDispatcher("Home.Student.jsp");
+   				RequestDispatcher dispatcher = request.getRequestDispatcher("Home.Student.jsp");
    				dispatcher.forward(request, response);
 
    			
    			}else {
    				
-   			
-   				Professor professor = dao.checkLoginProfessor(username, password);
+   			// verify if username and password are for doctor account
    				
-   				if (professor != null) {
+   				Doctor doctor = dao.checkLoginDoctor(username, password);
+   				
+   				if (doctor != null) {
    	   				
    	   				
    	   				HttpSession session = request.getSession();
-   	   				session.setAttribute("professor", professor);
+   	   				session.setAttribute("doctor", doctor);
 
-   	   				dispatcher = request.getRequestDispatcher("Home.Professor.jsp");
+   	   			RequestDispatcher dispatcher = request.getRequestDispatcher("Home.Doctor.jsp");
    	   				dispatcher.forward(request, response);
    				
 
    	   			} else {
    	   				
-   	    			
+   	   		      // verify if username and password are for teacher account
+   	   				
    	   				Teacher teacher = dao.checkLoginTeacher(username, password);
    	   				
    	   				    if (teacher != null) {
@@ -114,12 +115,13 @@ public class LoginServlet extends HttpServlet {
    	   	   				     HttpSession session = request.getSession();
    	   	   				     session.setAttribute("teacher", teacher);
 
-   	   	   				     dispatcher = request.getRequestDispatcher("Home.Teacher.jsp");
+   	   	   			         RequestDispatcher dispatcher = request.getRequestDispatcher("Home.Teacher.jsp");
    	   	   				     dispatcher.forward(request, response);
    	   				
 
    	   	   			     } else {
    	   				
+   	   	   		         	// verify if username and password are for admin account
    	    			
    	   			            	Admin admin = dao.checkLoginAdmin(username, password);
    	   				
@@ -129,13 +131,19 @@ public class LoginServlet extends HttpServlet {
    	   	   			        	HttpSession session = request.getSession();
    	   	   			        	session.setAttribute("admin", admin);
 
-   	   	   				        dispatcher = request.getRequestDispatcher("Home.Admin.jsp");
+   	   	   			            RequestDispatcher dispatcher = request.getRequestDispatcher("Home.Admin.jsp");
    	   	   				        dispatcher.forward(request, response);
 
    	   	   			           } else {
    	   			
-   				                   dispatcher = request.getRequestDispatcher("Login.Forme.jsp");
+   	   	   			        	   // username and password not in any table of actors in the database.
+   	   	   			        	   
+   	   	   			               RequestDispatcher dispatcher = request.getRequestDispatcher("Login.Forme.jsp");
    				                   dispatcher.include(request, response);
+   				                   
+   				                PrintWriter out = response.getWriter();   
+   				                out.print("<center><h2> Incorect username or password !!<h2>");
+   				                
    				               }
 
    		                }

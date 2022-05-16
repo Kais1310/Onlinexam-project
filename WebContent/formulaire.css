@@ -1,0 +1,152 @@
+ body{
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 800;
+ }
+ .Formule{
+    width: 920px;
+    height: 500px;
+    margin: auto;
+    background-color: white;
+    border-radius: 3px;
+} 
+ 
+ h2{
+    text-align: center;
+    padding-top: 15px;
+    color:rgba(0, 134, 252, 0.99);
+
+}
+form{
+    background-color: white;
+    width: 920px;
+    border-radius: 8px;
+    padding: 20px 40px;
+    box-shadow: 0 10px 25px rgba(92, 99, 105, .2);
+
+}
+span{
+    color: black;
+}
+.first{
+top: 1%;
+left: 1%;
+width: 50%;
+}
+.second{
+    margin-left: 60%;
+    margin-top: -34%;
+}
+form label{
+    display: flex;
+    margin-top: 10px;
+    font-size: 18px;
+    
+}
+form input{
+    
+    width: 300px;
+    padding: 7px;
+    border: none;
+    border: 1px solid gray;
+    border-radius: 6px;
+    outline: none;
+    color:black;
+    
+}
+
+.nbr_questions{
+    width: 100px;
+    height :30px;
+    padding: 7px;
+    border: none;
+    border: 1px solid gray;
+    border-radius: 6px;
+    outline: none;
+    color:black;
+
+}
+input:after{
+    	cursor: pointer;
+    	color: #ffff;
+
+    }
+input:hover{
+    	background-color: transparent;
+    	border-color: rgba(0, 134, 252, 0.99);
+    	border-width: 1px;
+    }
+
+.btn {
+   
+    transition-duration: 0.3s;
+     width: 20%;
+    border-radius: 20px;
+    background-color:   rgba(0, 134, 252, 0.99);
+    padding: 10px;
+    font-weight: bold;
+    outline: none;
+    cursor:pointer;color: #ffff;
+    margin: 30px 15px 15px 5px;
+    border: none;
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 500;
+    margin-left: 39%;
+    font-size: 18px;
+
+}
+.btn:hover {
+    background-color: transparent;
+    border: 2px solid rgba(0, 134, 252, 0.99);
+    cursor: pointer;
+
+}
+
+
+p{
+    text-align: center;
+    padding: top 20px; ;
+    font-size: 18px;
+}
+.role{
+width: 200px;
+font-size: 15px;
+padding: 7px ;
+border:0.2px rgba(0,0,0,0.2) solid;
+border-radius: 6px;
+
+
+
+    }
+    .role::after{
+    	cursor: pointer;
+    	color: #ffff;
+
+    }
+    option{
+    	font-size: 18px;
+    	font-family: 'Quicksand', sans-serif;
+    		}
+
+    .role:hover{
+    	background-color: transparent;
+    	border-color: rgba(0, 134, 252, 0.99);
+    	border-width: 1px;
+    }
+    strong{
+     
+    	font-size: 18px;
+    	float: left;
+    	font-weight: 400;
+    	display: flex;
+        margin-top: 10px;
+        
+
+    }
+    a :hover{
+        color: rgba(0, 134, 252, 0.99);
+    }
+     h3{
+        font-size: 10px;
+        color: black;
+    }

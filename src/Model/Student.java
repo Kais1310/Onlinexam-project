@@ -6,6 +6,7 @@ public class Student {
 	private String lastname;
 	private String level;
 	private String speciality;
+	private String department;
 	private int group;
 	private String email;
 	private String username;
@@ -15,7 +16,7 @@ public class Student {
 		super();
 	}
 
-	public Student(int student_id, String firstname, String lastname, String level, String speciality, int group,
+	public Student(int student_id, String firstname, String lastname, String level, String speciality, String department,int group,
 			String email, String username, String password) {
 		super();
 		this.student_id = student_id;
@@ -23,19 +24,21 @@ public class Student {
 		this.lastname = lastname;
 		this.level = level;
 		this.speciality = speciality;
+		this.department = department;
 		this.group = group;
 		this.email = email;
 		this.username = username;
 		this.password = password;
 	}
 
-	public Student(String firstname, String lastname, String level, String speciality, int group, String email,
+	public Student(String firstname, String lastname, String level, String speciality, String department, int group, String email,
 			String username, String password) {
 		super();
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.level = level;
 		this.speciality = speciality;
+		this.department = department;
 		this.group = group;
 		this.email = email;
 		this.username = username;
@@ -80,6 +83,14 @@ public class Student {
 
 	public void setSpeciality(String speciality) {
 		this.speciality = speciality;
+	}
+
+	public String getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(String department) {
+		this.department = department;
 	}
 
 	public int getGroup() {

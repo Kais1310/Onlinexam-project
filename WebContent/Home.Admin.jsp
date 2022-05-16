@@ -1,56 +1,94 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-	<title>HOME Admin </title>
-	  <link rel="stylesheet" href="admin.css">
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css" integrity="sha384-ejwKkLla8gPP8t2u0eQyL0Q/4ItcnyveF505U0NIobD/SMsNyXrLti6CWaD0L52l" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="style2.css" />
+   
+    <title>Admin home</title>
 </head>
+
 <body>
-<div class="admin">
-    <div class="sidebar">
-        <h2>e-Exam</h2>
-        <ul>
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar -->
+        <div class="bg-white" id="sidebar-wrapper">
+            <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i
+                    class="fas fa-user-secret me-2"></i>e-Exam</div>
+            <div class="list-group list-group-flush my-3">
+                <a href="Home.Admin.jsp" class="list-group-item list-group-item-action bg-transparent second-text active"><i
+                        class="fas fa-tachometer-alt me-2"></i>Home</a>
+                <a href="List_Student" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                        class="fas fa-project-diagram me-2"></i>Account Management</a>
+                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                        class="fas fa-chart-line me-2"></i>Modules</a>
+                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                        class="fas fa-map-marker-alt me-2"></i>reclamations</a>
+                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                        class="fas fa-comment-dots me-2"></i>Chat</a>
+                
+                <a href="LogoutAdminServlet" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
+                        class="fas fa-power-off me-2"></i>Logout</a>
+            </div>
+        </div>
+        <!-- /#sidebar-wrapper -->
 
-            <li><a href="Home.Admin.jsp"><i class="fas fa-home"></i>Home</a></li>
-            <li><a href="List_Student"><i class="bi bi-person-workspace"></i>   Management Account </a></li>
-            <li><a href="#"><i class="bi bi-book"></i>  Modules</a></li>
-            <li><a href="#"><i class="bi bi-calendar-date"></i>  Planing Exams</a></li>
-            <li><a href="#"><i class="bi bi-question-circle"></i>  Help</a></li>
-            <li><a href="#"><i class="bi bi-gear"></i>  Settings</a></li>
-            <li><a href="#"><i class="bi bi-plus-square-fill"></i> Add justification</a></li>
-              <li><a href="#"><i class="fas fa-user"></i> Profile</a></li>
-            <li><a href="LogoutAdminServlet"><i class="bi bi-gear"></i>  logout</a></li>
-            
-        </ul> 
-        <div class="social_media">
-          <a href="#"><i class="bi bi-envelope"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="bi bi-github"></i></a>
-      </div>
-    </div>
-    <div class="nav" class="user-wrapper">
-
-                <div class="search">
-                  
-                    <input type="text" placeholder="Search..">
-                    <button type="submit"><img src="pic/search.png" alt=""></button>
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
+                <div class="d-flex align-items-center">
+                    <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
+                    <h2 class="fs-2 m-0">Admin</h2>
                 </div>
-               
-              
-        
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle second-text fw-bold" href="#" id="navbarDropdown"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user me-2"></i>${Admin.username}
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Profile</a></li>
+                                <li><a class="dropdown-item" href="#">Settings</a></li>
+                                <li><a class="dropdown-item" href="#">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            
+            
+            
+            
+            
+            
+            
         </div>
-        
-        <img src="images.jpg" width="30" height="30" class="logo-admin">
-        <div class="dropdown-content">
-        <p>My Profile</p>
-        <p>Log Out</p>
-        </div>
-        
-      </div>
-       
+   </div>
+   
+   
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        var el = document.getElementById("wrapper");
+        var toggleButton = document.getElementById("menu-toggle");
+
+        toggleButton.onclick = function () {
+            el.classList.toggle("toggled");
+        };
+    </script>
 </body>
 </html>

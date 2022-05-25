@@ -23,9 +23,9 @@
             <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i
                     class="fas fa-user-secret me-2"></i>Exam informations</div>
             <div class="list-group list-group-flush my-3">
-             <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"> Firstname : </a>
-             <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"> Lastname : </a>
-              <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"> Email : </a>
+             <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"> Firstname : <c:out value="${student.firstname}" /></a>
+             <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"> Lastname : <c:out value="${student.lastname}" /></a>
+              <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"> Email : <c:out value="${student.email}" /></a>
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">Module : <c:out value="${exam.module}" /></a>
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">Level : <c:out value="${exam.level}" /> <c:out value="${exam.speciality}" /></a>        
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">Duration : <c:out value="${exam.duration}" /></a>
@@ -53,12 +53,12 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle second-text fw-bold" href="#" id="navbarDropdown"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-user me-2"></i> ${doctor.username} ${doctor.lastname} 
+                                <i class="fas fa-user me-2"></i> ${student.username} ${student.lastname} 
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#">Profile</a></li>
                                 <li><a class="dropdown-item" href="#">Settings</a></li>
-                                <li><a class="dropdown-item" href="LogoutProfessorServlet">Logout</a></li>
+                                <li><a class="dropdown-item" href="LogoutStudentServlet">Logout</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -67,17 +67,24 @@
             
            
             <!-- Topic questions -->
+            
+            <form action="AddAnswers" method="post">
+            
                   <c:forEach var="topic" items="${TopicQuestions}">
                      <div class="question">
                          <h2>*Q :  <c:out value="${topic.question}" /></h2> 
-                               <p>a)    <c:out value="${topic.choice1}" /> </p>
-                               <p>b)    <c:out value="${topic.choice2}" /></p>
-                               <p>c)    <c:out value="${topic.choice3}" /> </p>
-                               <p>d)    <c:out value="${topic.choice4}" /> </p>
+                                       <input type="hidden" name="question" value="<c:out value="${topic.question}" />">
+                               <p>a)   <input type="checkbox" name="answer" value="<c:out value="${topic.choice1}" />" > <c:out value="${topic.choice1}" /> </p>
+                               <p>b)   <input type="checkbox" name="answer" value="<c:out value="${topic.choice2}" />" > <c:out value="${topic.choice2}" /></p>
+                               <p>c)   <input type="checkbox" name="answer" value="<c:out value="${topic.choice3}" />" > <c:out value="${topic.choice3}" /> </p>
+                               <p>d)   <input type="checkbox" name="answer" value="<c:out value="${topic.choice4}" />" > <c:out value="${topic.choice4}" /> </p>
                      </div>
                      <br>
                  </c:forEach>
+                                       <input type="submit" value="Terminer">
+            </form>     
         </div> 
+        
    </div>
    
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>

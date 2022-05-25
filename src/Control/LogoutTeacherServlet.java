@@ -29,7 +29,7 @@ public class LogoutTeacherServlet extends HttpServlet {
 		session.removeAttribute("teacher");
 		session.invalidate();
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("Login.Forme.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("HOME.jsp");
 		dispatcher.forward(request, response);
 	}
 

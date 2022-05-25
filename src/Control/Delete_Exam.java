@@ -1,36 +1,36 @@
 package Control;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
+import Model.DAO;
 
 
-@WebServlet("/LogoutMonitorServlet")
-public class LogoutMonitorServlet extends HttpServlet {
+@WebServlet("/Delete_Exam")
+public class Delete_Exam extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    
-
-    public LogoutMonitorServlet() {
+  
+    public Delete_Exam() {
         super();
-   
+       
     }
 
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-HttpSession session= request.getSession(false);
+		int exam_id=Integer.parseInt(request.getParameter("exam_id"));
+		DAO dao = new DAO();
+		try {
+			dao.DeleteExam(exam_id);
+		} catch (InstantiationException | IllegalAccessException e) {
+			e.printStackTrace();
+		}
 		
-		session.removeAttribute("monitor");
-		session.invalidate();
-		
-		RequestDispatcher dispatcher= request.getRequestDispatcher("Login.Forme.jsp");
-		dispatcher.forward(request, response);
+		response.sendRedirect("Exam.Deleted.jsp");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

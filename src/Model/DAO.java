@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 
 public class DAO {
-	private static final int Exm_id = 0;
+	 
 	private  Connection connection;
 	
 
@@ -53,6 +53,7 @@ public class DAO {
 			
 	        if (result.next()) {
 	            student = new Student();
+	            student.setStudent_id(result.getInt("student_id"));
 	            student.setFirstname(result.getString("firstname"));
 	            student.setLastname(result.getString("lastname"));
 	            student.setEmail(result.getString("email"));
@@ -414,7 +415,7 @@ public Student FindStudent(int student_id) throws InstantiationException, Illega
 		ResultSet result = statement.executeQuery();			
 		
         while (result.next()) {
-        	
+        	 student_id = result.getInt(student_id);
             String firstname = result.getString("firstname");
             String lastname = result.getString("lastname");
             String email = result.getString("email");
@@ -461,9 +462,8 @@ public boolean DeleteStudent(int student_id) throws InstantiationException, Ille
 		
 }
 
- // this method used to create new exam in the data base
 
-public void AddExam(Exam exam) throws InstantiationException, IllegalAccessException {
+public void AddQuestion(Question question) throws InstantiationException, IllegalAccessException {
 	
 	
 	PreparedStatement stmt;
@@ -471,28 +471,34 @@ public void AddExam(Exam exam) throws InstantiationException, IllegalAccessExcep
 	try {
 		connectDB();
 				
-		stmt = connection.prepareStatement( "INSERT INTO `ExamOnline`.`Exam` (`module`, `level`, `speciality`, `type`, `nbr_questions`, `doc_id`) VALUES (?, ?, ?, ?, ?, ?);");
+		stmt = connection.prepareStatement( "INSERT INTO `ExamOnline`.`Question` (`module`, `content`, `choice1`, `choice2`, `choice3`, `choice4`, `right_answer`, `type`,`banque_id`,`doctorID`,`teacherID`) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?,?,?);");
 		
-		stmt.setString(1,exam.getModule());
-		stmt.setString(2,exam.getLevel());
-		stmt.setString(3,exam.getSpeciality());
-		stmt.setString(4,exam.getType());
-		stmt.setInt(5,exam.getNbr_questions());
-		stmt.setInt(6,exam.getDoc_id());		
+		stmt.setString(1,question.getModule());
+		stmt.setString(2,question.getContent());
+		stmt.setString(3,question.getChoice1());
+		stmt.setString(3,question.getChoice2());
+		stmt.setString(3,question.getChoice3());
+		stmt.setString(3,question.getChoice4());
+		stmt.setString(7,question.getRight_answer());
+		stmt.setString(8,question.getType());	
+		stmt.setInt(6,question.getBanque_id());
+		stmt.setInt(7,question.getDoctorID());
+		stmt.setInt(8,question.getTeacherID());		
 		  
 		 stmt.executeUpdate();
 		 
 		stmt.close();
 		 
 		
-		System.out.println("exam added --succés !");
+		System.out.println("question added --succés !");
 		} catch (SQLException e) {
 			System.out.println(e);
 		   }
 	 
 	
 }
-public ArrayList<Question> getQuestions() throws InstantiationException, IllegalAccessException, SQLException {
+
+public ArrayList<Question> getQuestions(String module) throws InstantiationException, IllegalAccessException, SQLException {
 
 	
 	String requete;
@@ -504,9 +510,9 @@ public ArrayList<Question> getQuestions() throws InstantiationException, Illegal
 		connectDB();
 	
 		 
-				requete = "SELECT * FROM Question ";
+				requete = "SELECT * FROM Question where module=?";
 				statement = connection.prepareStatement(requete);
-				
+				statement.setString(1, module);
 				
 				ResultSet result = statement.executeQuery();			
 				
@@ -522,6 +528,9 @@ public ArrayList<Question> getQuestions() throws InstantiationException, Illegal
 		        	question.setRight_answer(result.getString("right_answer"));
 		        	question.setType(result.getString("type"));
 		        	question.setModule(result.getString("module"));
+		        	question.setDoctorID(result.getInt("doctorID"));
+		        	question.setTeacherID(result.getInt("teacherID"));
+		        	question.setBanque_id(result.getInt("banque_id"));
 		        	
 		            
 		           questionlist.add(question);
@@ -561,15 +570,17 @@ public Question FindQuestion(int question_id) throws InstantiationException, Ill
         	
             String content = result.getString("content");
             String module = result.getString("module");
-            String type = result.getString("type");
             String choice1 = result.getString("choice1");
             String choice2 = result.getString("choice2");
             String choice3 = result.getString("choice3");
             String choice4 = result.getString("choice4");
+            String type = result.getString("type");
             String right_answer = result.getString("right_answer");
             int banque_id = result.getInt("banque_id");
+            int doctorID = result.getInt("doctorID");
+            int teacherID = result.getInt("teacherID");
             
-            question =new Question(question_id,module,content,choice1,choice2,choice3, choice4,right_answer,type,banque_id);
+            question =new Question(question_id,module,content,choice1,choice2,choice3, choice4,right_answer,type,banque_id,doctorID,teacherID);
       
         }
 		System.out.println("Find question byid -- succés !");
@@ -579,6 +590,168 @@ public Question FindQuestion(int question_id) throws InstantiationException, Ill
 	
 	return question;
 }
+
+
+public Question UpdateQuestion(Question question) throws InstantiationException, IllegalAccessException{ 
+
+	String requete;
+	PreparedStatement stmt;
+	
+	
+	
+	 try{  
+		 connectDB();
+		 
+	    	requete = "UPDATE `ExamOnline`.`Question` set `module`=?,`content`=?,`choice1`=?,`choice2`=?,`choice3`=?,`choice4`=?,`right_answer`=?,`type`=?,`banque_id`=?,`doctorID`=?,`teacherID`=?, WHERE `question_id` = ?";
+	    						
+			stmt = connection.prepareStatement(requete);
+			
+			stmt.setString(1,question.getModule());
+			stmt.setString(2,question.getContent());
+			stmt.setString(3,question.getChoice1());
+			stmt.setString(3,question.getChoice2());
+			stmt.setString(3,question.getChoice3());
+			stmt.setString(3,question.getChoice4());
+			stmt.setString(7,question.getRight_answer());
+			stmt.setString(8,question.getType());	
+			stmt.setInt(6,question.getBanque_id());
+			stmt.setInt(7,question.getDoctorID());
+			stmt.setInt(8,question.getTeacherID());		
+			stmt.setInt(9,question.getQuestion_id());
+			
+
+			
+			 stmt.executeUpdate();
+			 
+			 System.out.println("question updated --succés !");  
+	    }catch(Exception e){
+	    	e.printStackTrace();
+	    }
+	
+	return question;
+}
+
+
+
+public boolean DeleteQuestion(int question_id) throws InstantiationException, IllegalAccessException{ 
+	
+	boolean rowDelete = false;
+	String requete;
+	PreparedStatement stmt;
+	connectDB();
+	
+	 try{  
+		   
+	    	requete = "delete from Question where question_id=?";			
+			stmt = connection.prepareStatement(requete);
+			 stmt.setInt(1,question_id);
+			
+			rowDelete= stmt.executeUpdate()>0;
+			stmt.close(); 
+			
+	        connection.close();   
+	        System.out.println("Delete question --succés !");
+	    }catch(Exception e){
+	    	e.printStackTrace();
+	    }
+	return rowDelete;
+		
+}
+
+
+ // this method used to create new exam in the data base
+
+public void AddExam(Exam exam) throws InstantiationException, IllegalAccessException {
+	
+	
+	PreparedStatement stmt;
+	try {
+		connectDB();
+				
+		stmt = connection.prepareStatement( "INSERT INTO `ExamOnline`.`Exam` (`module`, `level`, `speciality`, `date`, `duration`, `type`, `nbr_questions`, `doc_id`) VALUES (?, ?, ?, ?, ?, ?, ?, ?);");
+		
+		 
+		stmt.setString(1,exam.getModule());
+		stmt.setString(2,exam.getLevel());
+		stmt.setString(3,exam.getSpeciality());
+		stmt.setString(4,exam.getDate());
+		stmt.setString(5,exam.getDuration());
+		stmt.setString(6,exam.getType());
+		stmt.setInt(7,exam.getNbr_questions());
+		stmt.setInt(8,exam.getDoc_id());		
+		  
+		 stmt.executeUpdate();
+		 
+		stmt.close();
+		 
+		
+		System.out.println("exam added --succés !");
+		} catch (SQLException e) {
+			System.out.println(e);
+		   }
+	 
+	
+}
+
+public Exam UpdateExam(Exam exam) throws InstantiationException, IllegalAccessException{ 
+
+	String requete;
+	PreparedStatement stmt;
+	
+	
+	
+	 try{  
+		 connectDB();
+		 
+	    	requete = "UPDATE `ExamOnline`.`Exam` set `module`=?,`level`=?,`speciality`=?,`type`=?,`date`=?,`duration`=?,`nbr_questions`=? ";
+	    						
+			stmt = connection.prepareStatement(requete);
+			
+			
+			stmt.setString(1,exam.getModule());
+			stmt.setString(2,exam.getLevel());
+			stmt.setString(3,exam.getSpeciality());
+			stmt.setString(4,exam.getType());
+			stmt.setString(5,exam.getDate());
+			stmt.setString(6,exam.getDuration());
+			stmt.setInt(7,exam.getNbr_questions());
+			
+			 stmt.executeUpdate();
+			 System.out.println("exam updated --succés !"); 
+	    }catch(Exception e){
+	    	e.printStackTrace();
+	    }
+	
+	return exam;
+}
+
+public boolean DeleteExam(int exam_id) throws InstantiationException, IllegalAccessException{ 
+	
+	boolean rowDelete = false;
+	String requete;
+	PreparedStatement stmt;
+	connectDB();
+	
+	 try{  
+		   
+	    	requete = "delete from Exam where exam_id=?";			
+			stmt = connection.prepareStatement(requete);
+			 stmt.setInt(1,exam_id);
+			
+			rowDelete= stmt.executeUpdate()>0;
+			stmt.close(); 
+			
+	        connection.close();   
+	        System.out.println("Delete exam --succés !");
+	    }catch(Exception e){
+	    	e.printStackTrace();
+	    }
+	return rowDelete;
+		
+}
+
+
+
 
 public Exam FindExam(int exam_id) throws InstantiationException, IllegalAccessException {
 	 
@@ -594,6 +767,7 @@ public Exam FindExam(int exam_id) throws InstantiationException, IllegalAccessEx
 		 
 		statement = connection.prepareStatement("SELECT * FROM Exam where exam_id=?");
 		
+		
 		statement.setInt(1, exam_id);
 		ResultSet result = statement.executeQuery();			
 		
@@ -603,13 +777,15 @@ public Exam FindExam(int exam_id) throws InstantiationException, IllegalAccessEx
             String module = result.getString("module");
             String level = result.getString("level");          
             String speciality = result.getString("speciality");
+            String date = result.getString("date");
+            String duration = result.getString("duration");
             String type = result.getString("type");
             int nbr_questions = result.getInt("nbr_questions");
             int doc_id = result.getInt("doc_id");
             
-             exam = new Exam( exam_id, module,  level,  speciality,  type,  nbr_questions,  doc_id) ;
+             exam = new Exam( exam_id, module,  level,  speciality, date, duration, type, nbr_questions, doc_id) ;
         }
-		System.out.println("Find question byid -- succés !");
+		System.out.println("Find exam byid -- succés !");
 	}catch (SQLException e) {
 		System.out.println(e);
 	}
@@ -617,7 +793,10 @@ public Exam FindExam(int exam_id) throws InstantiationException, IllegalAccessEx
 	return exam;
 }
 
-public Exam FindExamId(String module,String level, String speciality, String type, int nbr_questions, int doc_id) throws InstantiationException, IllegalAccessException {
+
+
+
+public Exam FindExamId(String module,String level, String speciality, String date, String duration, String type, int nbr_questions, int doc_id) throws InstantiationException, IllegalAccessException {
 	 
 	PreparedStatement statement;
 	
@@ -629,14 +808,17 @@ public Exam FindExamId(String module,String level, String speciality, String typ
 		connectDB();
 		
 		 
-		statement = connection.prepareStatement("SELECT * FROM Exam where module=? and level=? and speciality =? and type=? and nbr_questions=? and doc_id=?");
+		statement = connection.prepareStatement("SELECT * FROM Exam where module=? and level=? and speciality =? and date=? and duration=? and type=? and nbr_questions=? and doc_id=?");
+		
 		
 		statement.setString(1, module);
 		statement.setString(2, level);
 		statement.setString(3, speciality);
-		statement.setString(4, type);
-		statement.setInt(5, nbr_questions);
-		statement.setInt(6, doc_id);
+		statement.setString(4, date);
+		statement.setString(5, duration);
+		statement.setString(6, type);
+		statement.setInt(7, nbr_questions);
+		statement.setInt(8, doc_id);
 		ResultSet result = statement.executeQuery();			
 		
         while (result.next()) {
@@ -645,11 +827,13 @@ public Exam FindExamId(String module,String level, String speciality, String typ
             module = result.getString("module");
               level = result.getString("level");          
               speciality = result.getString("speciality");
+              date = result.getString("date");
+              duration = result.getString("duration");
               type = result.getString("type");
               nbr_questions = result.getInt("nbr_questions");
               doc_id = result.getInt("doc_id");
             
-             exam = new Exam( exam_id,module,  level,  speciality,  type,  nbr_questions,  doc_id) ;
+             exam = new Exam( exam_id,module,  level,  speciality, date, duration ,type,  nbr_questions,  doc_id) ;
         	    
         	  
         }
@@ -671,15 +855,16 @@ public void AddTopic_Qsts(Question question, int exam_id) throws InstantiationEx
 	try {
 		connectDB();
 				
-		stmt = connection.prepareStatement( "INSERT INTO `ExamOnline`.`Topic` (`module`, `question`, `choice1`, `choice2`, `choice3`, `choice4`, `exam_id`) VALUES (?, ?, ?, ?, ?, ?, ?);");
+		stmt = connection.prepareStatement( "INSERT INTO `ExamOnline`.`Topic` (`module`, `question_type`,`question`, `choice1`, `choice2`, `choice3`, `choice4`, `exam_id`) VALUES (?, ?, ?, ?, ?, ?, ?, ?);");
 		
 		stmt.setString(1,question.getModule());
-		stmt.setString(2,question.getContent());
-		stmt.setString(3,question.getChoice1());
-		stmt.setString(4,question.getChoice2());
-		stmt.setString(5,question.getChoice3());
-		stmt.setString(6,question.getChoice4());
-		stmt.setInt(7,exam_id);		
+		stmt.setString(2,question.getType());
+		stmt.setString(3,question.getContent());
+		stmt.setString(4,question.getChoice1());
+		stmt.setString(5,question.getChoice2());
+		stmt.setString(6,question.getChoice3());
+		stmt.setString(7,question.getChoice4());
+		stmt.setInt(8,exam_id);		
 		
 		stmt.executeUpdate();
 		stmt.close();
@@ -715,6 +900,7 @@ public ArrayList<Topic> getTopic(int exam_id) throws InstantiationException, Ill
 		        	
 		        	Topic topic = new Topic();
 		        	topic.setTopic_id(result.getInt("topic_id"));
+		        	topic.setQuestion_type(result.getString("question_type"));
 		        	topic.setQuestion(result.getString("question"));
 		        	topic.setChoice1(result.getString("choice1"));
 		        	topic.setChoice2(result.getString("choice2"));
@@ -740,8 +926,176 @@ public ArrayList<Topic> getTopic(int exam_id) throws InstantiationException, Ill
 	
 }
 
+// method getExams return list of the exam created by doctor using doc_id
+
+public ArrayList<Exam> getExams(int doc_id) throws InstantiationException, IllegalAccessException, SQLException {
+
+	
+	String requete;
+	PreparedStatement statement;
+	
+	
+	ArrayList<Exam> examlist = new ArrayList<Exam>();
+	try {
+		connectDB();
+	
+		 
+				requete = "SELECT * FROM Exam where doc_id=?";
+				statement = connection.prepareStatement(requete);
+				statement.setInt(1, doc_id);
+				
+				ResultSet result = statement.executeQuery();			
+				
+		        while (result.next()) {
+		        	
+		        	Exam exam = new Exam();
+		        	exam.setExam_id(result.getInt("exam_id"));
+		        	exam.setModule(result.getString("module"));
+		        	exam.setLevel(result.getString("level"));
+		        	exam.setSpeciality(result.getString("speciality"));
+		        	exam.setType(result.getString("type"));
+		        	exam.setDate(result.getString("date"));
+		        	exam.setDuration(result.getString("duration"));
+		        	exam.setNbr_questions(result.getInt("nbr_questions"));
+		        	exam.setDoc_id(result.getInt("doc_id"));
+		        	
+		           examlist.add(exam);
+		        }
+				
+			
+	        
+			statement.close();
+
+			System.out.println("Get List exams -- succés !");
+	  }catch(Exception e){
+	    	e.printStackTrace();
+	    }
+
+	return examlist;
+	
+}
 
 
+public ArrayList<Exam> getStudentExams(String level, String speciality) throws InstantiationException, IllegalAccessException, SQLException {
+
+	
+	String requete;
+	PreparedStatement statement;
+	
+	
+	ArrayList<Exam> examlist = new ArrayList<Exam>();
+	try {
+		connectDB();
+	
+		 
+				requete = "SELECT * FROM Exam where level=? and speciality=?";
+				statement = connection.prepareStatement(requete);
+				statement.setString(1, level);
+				statement.setString(2, speciality);
+				
+				ResultSet result = statement.executeQuery();			
+				
+		        while (result.next()) {
+		        	
+		        	Exam exam = new Exam();
+		        	exam.setExam_id(result.getInt("exam_id"));
+		        	exam.setModule(result.getString("module"));
+		        	exam.setLevel(result.getString("level"));
+		        	exam.setSpeciality(result.getString("speciality"));
+		        	exam.setType(result.getString("type"));
+		        	exam.setDate(result.getString("date"));
+		        	exam.setDuration(result.getString("duration"));
+		        	exam.setNbr_questions(result.getInt("nbr_questions"));
+		        	exam.setDoc_id(result.getInt("doc_id"));
+		        	
+		           examlist.add(exam);
+		        }
+				
+			
+	        
+			statement.close();
+
+			System.out.println("Get List exam for Student -- succés !");
+	  }catch(Exception e){
+	    	e.printStackTrace();
+	    }
+
+	return examlist;
+	
+}
+
+public void AddAnswers(Answer answer) throws InstantiationException, IllegalAccessException {
+	
+	
+	PreparedStatement stmt;
+	
+	try {
+		connectDB();
+				
+		stmt = connection.prepareStatement( "INSERT INTO `ExamOnline`.`Answer` (`question`, `answer`,`examID`, `studentID`) VALUES (?, ?, ?, ?);");
+		
+		stmt.setString(1,answer.getQuestion());
+		stmt.setString(2,answer.getAnswer());
+		stmt.setInt(3,answer.getExamID());
+		stmt.setInt(4,answer.getStudentID());
+		
+		
+		stmt.executeUpdate();
+		stmt.close();
+		
+		System.out.println("Answer added to table answer --succés !");
+		} catch (SQLException e) {
+			System.out.println(e);
+		   }
+	
+	
+	
+}
+
+public ArrayList<Answer> ShowAnswers(int examID, int studentID) throws InstantiationException, IllegalAccessException, SQLException {
+
+	
+	String requete;
+	PreparedStatement statement;
+	
+	
+	ArrayList<Answer> StudentAnswers = new ArrayList<Answer>();
+	try {
+		connectDB();
+	
+		 
+				requete = "SELECT * FROM Answer where examID = ? and studentID=?";
+				statement = connection.prepareStatement(requete);
+				
+				statement.setInt(1, examID);
+				statement.setInt(2, studentID);
+				ResultSet result = statement.executeQuery();			
+				
+		        while (result.next()) {
+		        	
+		        	Answer answer = new Answer();
+		        	
+		        	answer.setQuestion(result.getString("question"));
+		        	answer.setAnswer(result.getString("answer"));
+		        	answer.setExamID(result.getInt("examID"));
+		        	answer.setStudentID(result.getInt("studentID"));
+		        	
+		            
+		        	StudentAnswers.add(answer);
+		        }
+				
+			
+	        
+			statement.close();
+
+			System.out.println("Show Student Answers -- succés !");
+	  }catch(Exception e){
+	    	e.printStackTrace();
+	    }
+
+	return StudentAnswers;
+	
+}
 
 
 

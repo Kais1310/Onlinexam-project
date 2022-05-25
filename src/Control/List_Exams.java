@@ -1,6 +1,8 @@
 package Control;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,29 +10,42 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
+import Model.DAO;
+import Model.Exam;
 
-@WebServlet("/LogoutProfessorServlet")
-public class LogoutProfessorServlet extends HttpServlet {
+ 
+@WebServlet("/List_Exams")
+public class List_Exams extends HttpServlet {
 	private static final long serialVersionUID = 1L;
    
-    public LogoutProfessorServlet() {
+    public List_Exams() {
         super();
        
     }
 
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-HttpSession session= request.getSession(false);
+       DAO dao = new DAO();
 		
-		session.removeAttribute("doctor");
-		session.invalidate();
+		 ArrayList<Exam> ListExams = null;
+		 int doc_id = Integer.parseInt(request.getParameter("doc_id"));
 		
-		RequestDispatcher dispatcher= request.getRequestDispatcher("HOME.jsp");
+			try {
+				ListExams = dao.getExams(doc_id);
+			} catch (InstantiationException | IllegalAccessException | SQLException e) {
+				
+				e.printStackTrace();
+			}
+		
+		
+		request.setAttribute("ListExams", ListExams);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("Exams.List.jsp");
 		dispatcher.forward(request, response);
+			
+		
 	}
+		
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		

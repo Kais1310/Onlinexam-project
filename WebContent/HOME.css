@@ -371,13 +371,13 @@ footer p:nth-child(2){
 
 }
 form{
-    background-color: rgba(255, 255, 255,0.9);
-    height: 300px;
+    background-color: rgba(255,255,255,0.9);
+    height: 390px;
     width: 350px;
     border-radius: 30px;
     padding: 20px 50px;
     margin-top: 20%;
-   margin-left:230%;
+   margin-left:200%;
  }
 form input{
     width: 90%;
@@ -401,20 +401,81 @@ form input{
     font-weight: bold;
     outline: none;
     cursor:pointer;color: #ffff;
-    margin: 30px 15px 0px 5px;
+    margin: 10px 15px 0px 5px;
     border: none;
 text-align: center;
   font-family: 'Quicksand', sans-serif;
   font-weight:500px;
   font-size:15px;
-  margin-left: 30%;
+  margin-left: 32%;
 background-color: rgba(0, 134, 252, 0.99);
 }
 .login button:hover{
 background-color: transparent;
-	border: 2px solid ;
+	border: 2px solid rgba(0, 134, 252, 0.99) ;
 	cursor: pointer;
-	text-decoration-color: black;
+	text-decoration-color:black;
 	color: black;
-	font-weight: 500;
-}  
+	font-weight: 600;
+}
+.a{
+  position:absolute;
+  top:10%;
+  left: 20%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+}
+.bttn {
+  background-color:rgba(0, 134, 252, 0.99);
+  color: white;
+  text-decoration: none;
+  border: 2px solid transparent;
+  font-weight: bold;
+  padding: 10px 30px;
+  font-size: 15px;
+  border-radius: 30px;
+  transition: transform .4s; 
+  text-align: center;
+  margin-left: 500%;
+  margin-top: 800%;
+}
+.bttn:hover{
+  background-color: transparent;
+  border: 2px solid rgba(0, 134, 252, 0.99);
+  cursor: pointer;
+
+}
+.popup{
+  background: rgba(0,0,0,0.0);
+  width:100%;
+  height: 100%;
+  height: 100%;
+  position:absolute;
+  top:0;
+  display: none;
+  justify-content: center;
+  align-items:center;
+}
+
+input{
+  margin: 20px auto;
+  display: block;
+  width:50px;
+  padding:8px;
+  border:1px solid gray;
+}
+.close{
+  position: relative;
+ float: right;
+  background:#fff;
+  height: 20px;
+  width:20px;
+  border-radius:50%;
+  cursor: pointer;
+}
+.popup-content i{
+margin-left: 38%;
+  position: relative;
+  font-size: 80px;
+color: rgba(0, 134, 252, 0.99);
+}

@@ -1,11 +1,12 @@
 package Model;
-
+ 
 public class Exam {
-	
 	public int exam_id;
 	public String module;
 	public String level;
 	public String speciality;
+	public String date;
+	public String duration;
 	public String type;
 	public int nbr_questions;
 	public int doc_id;
@@ -14,22 +15,26 @@ public class Exam {
 		super();
 	}
 	
-	public Exam(int exam_id, String module, String level, String speciality, String type, int nbr_questions, int doc_id) {
+	public Exam(int exam_id, String module, String level, String speciality,String date,String duration, String type, int nbr_questions, int doc_id) {
 		super();
 		this.exam_id = exam_id;
 		this.module = module;
 		this.level = level;
 		this.speciality = speciality;
+		this.date = date;
+		this.duration = duration;
 		this.type = type;
 		this.nbr_questions = nbr_questions;
 		this.doc_id = doc_id;
 	}
 
-	public Exam(String module, String level, String speciality, String type, int nbr_questions, int doc_id) {
+	public Exam(String module, String level, String speciality,String date, String duration, String type, int nbr_questions, int doc_id) {
 		super();
 		this.module = module;
 		this.level = level;
 		this.speciality = speciality;
+		this.date = date;
+		this.duration = duration;
 		this.type = type;
 		this.nbr_questions = nbr_questions;
 		this.doc_id = doc_id;
@@ -73,6 +78,24 @@ public class Exam {
 
 	public void setSpeciality(String speciality) {
 		this.speciality = speciality;
+	}
+	
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+	
+
+	public String getDuration() {
+		return duration;
+	}
+
+	public void setDuration(String duration) {
+		this.duration = duration;
 	}
 
 	public String getType() {

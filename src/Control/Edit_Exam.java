@@ -8,27 +8,35 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
+import Model.DAO;
+import Model.Exam;
 
 
-@WebServlet("/LogoutProfessorServlet")
-public class LogoutProfessorServlet extends HttpServlet {
+@WebServlet("/Edit_Exam")
+public class Edit_Exam extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-   
-    public LogoutProfessorServlet() {
+  
+    public Edit_Exam() {
         super();
-       
     }
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+       DAO dao = new DAO();
+       
+        int exam_id=Integer.parseInt(request.getParameter("exam_id")); 
 		
-HttpSession session= request.getSession(false);
+        Exam existexam = null;
+		try {
+			existexam = dao.FindExam(exam_id);
+		} catch (InstantiationException | IllegalAccessException e) {
+			e.printStackTrace();
+		}
 		
-		session.removeAttribute("doctor");
-		session.invalidate();
-		
-		RequestDispatcher dispatcher= request.getRequestDispatcher("HOME.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("Exam.Form.Edit.jsp");
+		request.setAttribute("exam", existexam);
 		dispatcher.forward(request, response);
 	}
 

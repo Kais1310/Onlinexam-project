@@ -28,7 +28,7 @@ public class LogoutAdminServlet extends HttpServlet {
 		session.removeAttribute("admin");
 		session.invalidate();
 		
-		RequestDispatcher dispatcher= request.getRequestDispatcher("Login.Forme.jsp");
+		RequestDispatcher dispatcher= request.getRequestDispatcher("HOME.jsp");
 		dispatcher.forward(request, response);
 		
 		

@@ -80,32 +80,38 @@
                     </ul>
                 </div>
             </nav>
-           
-           
-                  
-             <div class="Formule"> 
-                  <form  action="Createxam" method="post">
-                        <h2>Create Exam</h2>
-                 <p>First u need to enter the informations of the exam </p>
+            
+              <div class="Formule"> 
+                  <form  action="Update_Exam" method="post">
+                        <h2>Update Exam</h2>
+                 <input type="hidden" name="exam_id" value="<c:out value="${exam.date}" />">
+                 
                  <div class="first">
                      <label>Module</label>
-                          <input type="text"  name="module"  required="required">
+                          <select class="role" name="module" required="required"  > 
+                               <option ><c:out value="${doctor.module}" /></option>                        
+                         </select>
                          <br>
                      <label>Date</label>
-                          <input type="date"  name="date"  required="required">
+                          <input type="datetime-local"  name="date"  required="required">
                          <br>    
-                     <label>Duree (min)</label>
-                          <input type="text"  name="durée"  required="required">
-                         <br>
-<br>
-                           Number of questions :  <input type="text" class="nbr_questions" name="nbr_questions" required="required" >
-                   <input type="hidden"  name="doc_id" value="<c:out value="${doctor.doctor_id}" />"  >
-                        
+                     <label>Duree</label>
+                         <select class="role" name="duration" required="required"  > 
+                               <option><c:out value="${exam.duration}" /></option>
+                               <option >30 min</option>
+                               <option >1h</option>
+                               <option >1h30min</option>
+                               <option >2h</option>
+                         </select>
+                        <br><br>
+
+                   Number of questions :  <input type="text" class="nbr_questions" name="nbr_questions" value="<c:out value="${exam.nbr_questions}" />" required="required" >
                         <br>
                        </div>
                        <div class="second">
                      <strong> Level </strong><br><br>
                          <select class="role" name="level" required="required"  > 
+                               <option><c:out value="${exam.level}" /></option>
                                <option >L1</option>
                                <option >L2</option>
                                <option >L3</option>
@@ -114,8 +120,9 @@
                          </select>
                         <br>
      
-                    <strong> Speciality </strong><br>  <br>
-                        <select class="role" name="speciality" required="required" >                       
+                    <strong> Speciality </strong><br><br> 
+                        <select class="role" name="speciality" required="required" >  
+                              <option><c:out value="${exam.speciality}" /></option>                     
                               <option>MI</option>
                               <option>GL</option>
                               <option>TI</option>
@@ -128,6 +135,7 @@
    
                    <strong> Type </strong><br><br>
                         <select class="role" name="type" required="required" >
+                             <option><c:out value="${exam.type}" /></option>
                              <option>QCM questions</option>
                              <option>Disjunctive or Tag Questions.</option>
                              <option>both</option>
@@ -141,13 +149,12 @@
                 
                       </div>
                       <br>
-                  <button type="submit" class="btn ">Next</button> 
+                    <input type="hidden"  name="doc_id" value="<c:out value="${exam.doc_id}" />"  >   
+                  <button type="submit" class="btn ">Update</button> 
         
                 </form>
              </div>
-             
-             
-            
+           
             
         </div>
        

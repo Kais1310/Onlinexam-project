@@ -4,6 +4,7 @@ public class Topic {
 	
 	public int topic_id;
 	public String module;
+	public String question_type;
 	public String question;
 	public String choice1;
 	public String choice2;
@@ -14,11 +15,12 @@ public class Topic {
 	public Topic() {
 		super();
 	}
-	public Topic(int topic_id, String module, String question, String choice1, String choice2, String choice3,
+	public Topic(int topic_id, String module,String question_type, String question, String choice1, String choice2, String choice3,
 			String choice4,int exam_id) {
 		super();
 		this.topic_id = topic_id;
 		this.module = module;
+		this.question_type = question_type;
 		this.question = question;
 		this.choice1 = choice1;
 		this.choice2 = choice2;
@@ -28,9 +30,10 @@ public class Topic {
 	}
 
 
-	public Topic(String module, String question, String choice1, String choice2, String choice3, String choice4, int exam_id) {
+	public Topic(String module, String question_type, String question, String choice1, String choice2, String choice3, String choice4, int exam_id) {
 		super();
 		this.module = module;
+		this.question_type = question_type;
 		this.question = question;
 		this.choice1 = choice1;
 		this.choice2 = choice2;
@@ -60,6 +63,12 @@ public class Topic {
 	}
 
 
+	public String getQuestion_type() {
+		return question_type;
+	}
+	public void setQuestion_type(String question_type) {
+		this.question_type = question_type;
+	}
 	public String getQuestion() {
 		return question;
 	}

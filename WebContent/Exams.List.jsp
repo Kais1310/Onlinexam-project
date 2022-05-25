@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Home Doctor</title>
+<title>Exams</title>
   <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style2.css" />
+     <link rel="stylesheet" href="question.css" />
 
  
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -32,20 +33,19 @@
          <!-- Sidebar -->
       <div class="bg-white" id="sidebar-wrapper">
             <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i
-                    class="fas fa-user-secret me-2"></i>e-Exam</div>
+                    class="fas fa-check"></i><h1><span>e</span>-Exam</h1> <h3>Université Abd ELHamid Mehri</h3></div>
             <div class="list-group list-group-flush my-3">
-                <a href="Home.Doctor.jsp" class="list-group-item list-group-item-action bg-transparent second-text active"><i
-                        class="fas fa-tachometer-alt me-2"></i>Home</a>
+                <a href="Home.Doctor.jsp" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                        class="fas fa-home"></i> Home</a>
+                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="bi bi-bank2"></i>  Bank</a>        
+                <a href="List_Exams?doc_id=<c:out value="${doctor.doctor_id}" />" class="list-group-item list-group-item-action bg-transparent second-text active"><i
+                        class="fas fa-list"></i> Exams</a>
+                 <a href="Createxam?doctor_id=<c:out value="${doctor.doctor_id}" />" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                        class="fas fa-edit"></i> Create exam</a>
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                        class="fas fa-project-diagram me-2"></i>Bank</a>        
-                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                        class="fas fa-project-diagram me-2"></i>Exams</a>
-                <a href="Createxam?doctor_id=<c:out value="${doctor.doctor_id}" />" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                        class="fas fa-chart-line me-2"></i>Create exam</a>
-                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                        class="fas fa-project-diagram me-2"></i>Notes</a> 
+                        class="fas fa-check"></i> Notes</a> 
                         <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                        class="fas fa-project-diagram me-2"></i>Reclamations</a>        
+                        class="fas fa-exclamation"></i> Reclamations</a>        
                 
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-comment-dots me-2"></i>Chat</a>
@@ -85,55 +85,59 @@
                     </ul>
                 </div>
             </nav>
+  
+              <c:if test="${ListExams.size() == 0}">
+                 <div class="question">
+                   <h2 style="text-align: center;">Your list of Exams is empty </h2><br>
+                   <p>you have non exam created for now, you want to create one ? <a href="Createxam?doctor_id=<c:out value="${doctor.doctor_id}" />">click ici</a></p>
+                 </div>
+              </c:if>    
            
-           
-                  
-             <div class="table">
-                    <h2>Questions list</h2> 
+              <c:if test="${ListExams.size() != 0}">         
+              <div class="table">
+                    <h2>Exams list</h2> 
                     
                     <div class="col">
-                     <form action="CreateTopicQsts" method="post">
-                     
-                     <input type="hidden" name="Exm_id" value="<c:out value="${exam.exam_id}" />">
-                     
                         <table class="table bg-white rounded shadow-sm  table-hover">
                             <thead>
                                 <tr>
                                     <th scope="col" width="50">id</th>
-                                    <th scope="col"></th>
-                                    <th scope="col">Questions</th>
-                                    <th scope="col"></th>
-                                    <th scope="col"></th>
-                                    <th scope="col">module</th>
-                                     <th scope="col">type</th>
+                                    <th scope="col">Module</th>
+                                    <th scope="col">Level</th>
+                                    <th scope="col">Speciality</th>
+                                    <th scope="col">Date</th>
+                                     <th scope="col">Duration</th>
+                                     <th scope="col">Type</th>
+                                     <th scope="col" width="20">nbrQ</th>
+                                    
                                      <th scope="col"></th>
+                                     <th scope="col">action</th>
                                 </tr>
                             </thead>
                             <tbody>
                             
-                                 <c:forEach var="question" items="${ListQuestions}">
+                                 <c:forEach var="exam" items="${ListExams}">
 						             <tr>
-						                <th scope="row"><c:out value="${question.question_id}" /></th>
-						              	<td><input type="checkbox" name="qst_id" value="<c:out value="${question.question_id}" />" ></td>			              	
-							            <td><c:out value="${question.content}" /></td>
-							            <td><a href="Show_Question?question_id=<c:out value='${question.question_id}' /> "><i class="bi bi-eye"></i></a></td>
-							            <td></td>
-						             	<td><c:out value="${question.module}" /></td>
-						             	<td><c:out value="${question.type}" /></td>
-						             	<td></td>
-						             </tr>
+						                <th scope="row"><c:out value="${exam.exam_id}" /></th>
+						              	<td><c:out value="${exam.module}" /></td>			              	
+							            <td><c:out value="${exam.level}" /></td>	
+							            <td><c:out value="${exam.speciality}" /></td>
+							            <td><c:out value="${exam.date}" /></td>	
+							            <td><c:out value="${exam.duration}" /></td>
+							            <td><c:out value="${exam.type}" /></td>	
+							            <td><c:out value="${exam.nbr_questions}" /></td>
+							            <td><a href="Show_Topic?exam_id=<c:out value="${exam.exam_id}" />"><i class="bi bi-eye"></i></a></td>		
+							            <td><a href="Edit_Exam?exam_id=<c:out value='${exam.exam_id}' /> "><i class="bi bi-gear"></i></a> / <a href="Delete_Exam?exam_id=<c:out value='${exam.exam_id}'/> "> <i class="bi bi-trash3"></i></a></td>	
+							        </tr>
 				            	</c:forEach>
                               
                             </tbody>
                         </table>
-                        <button type="submit" class="btn ">Add topic</button> 
-                     </form>   
+                      
                     </div>
                 </div>
+               </c:if>
              
-             
-            
-            
         </div>
        
              

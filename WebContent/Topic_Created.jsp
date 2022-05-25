@@ -77,7 +77,7 @@
                 </div>
             </nav>
            
-           
+           <input type="hidden" name="exam_id" value="<c:out value="${exam.exam_id}" />">
                   
                      <div class="question">
                          <h2>The topic is created succesfully</h2> 

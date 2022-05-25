@@ -11,13 +11,15 @@ public class Question {
 	public String right_answer;
 	public String type;
 	public int banque_id;
+	public int doctorID;
+	public int teacherID;
 	
 	public Question() {
 		super();
 	}
 	
 	public Question(int question_id, String module, String content, String choice1, String choice2, String choice3,
-			String choice4, String right_answer, String type,int banque_id) {
+			String choice4, String right_answer, String type,int banque_id, int doctorID, int teacherID) {
 		super();
 		this.question_id = question_id;
 		this.module = module;
@@ -29,11 +31,13 @@ public class Question {
 		this.right_answer = right_answer;
 		this.type = type;
 		this.banque_id = banque_id;
+		this.doctorID= doctorID;
+		this.teacherID = teacherID;
 	}
 
 
 	public Question(String module, String content, String choice1, String choice2, String choice3, String choice4,
-			String right_answer, String type,int banque_id) {
+			String right_answer, String type,int banque_id,int doctorID, int teacherID) {
 		super();
 		this.module = module;
 		this.content = content;
@@ -44,6 +48,8 @@ public class Question {
 		this.right_answer = right_answer;
 		this.type = type;
 		this.banque_id = banque_id;
+		this.doctorID= doctorID;
+		this.teacherID = teacherID;
 	}
 
 
@@ -142,6 +148,22 @@ public class Question {
 
 	public void setBanque_id(int banque_id) {
 		this.banque_id = banque_id;
+	}
+
+	public int getDoctorID() {
+		return doctorID;
+	}
+
+	public void setDoctorID(int doctorID) {
+		this.doctorID = doctorID;
+	}
+
+	public int getTeacherID() {
+		return teacherID;
+	}
+
+	public void setTeacherID(int teacherID) {
+		this.teacherID = teacherID;
 	}
 	
 	

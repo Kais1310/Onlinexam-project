@@ -26,7 +26,7 @@ public class Create_Student extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 RequestDispatcher dispatcher = request.getRequestDispatcher("Student.Form.jsp");
+		 RequestDispatcher dispatcher = request.getRequestDispatcher("Student.Form.Add.jsp");
 			dispatcher.include(request, response);
 
 	}
@@ -64,7 +64,7 @@ public class Create_Student extends HttpServlet {
 		    out.print("<p>Student account added successfully!</p>");  
 		   		    
             
-		    RequestDispatcher dispatcher = request.getRequestDispatcher("Student.Form.jsp");
+		    RequestDispatcher dispatcher = request.getRequestDispatcher("Student.Form.Add.jsp");
 			dispatcher.include(request, response);
 
 		

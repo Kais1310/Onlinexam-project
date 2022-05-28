@@ -10,40 +10,33 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Model.DAO;
-import Model.Student;
+import Model.Doctor;
 
-
-@WebServlet("/Edit_Student")
-public class Edit_Student extends HttpServlet {
+@WebServlet("/Edit_Doctor")
+public class Edit_Doctor extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-   
-    public Edit_Student() {
+  
+    public Edit_Doctor() {
         super();
        
     }
 
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		DAO dao = new DAO();
- 
-        int student_id=Integer.parseInt(request.getParameter("student_id")); 
+		 
+        int doctor_id=Integer.parseInt(request.getParameter("doctor_id")); 
 		
-        Student existestudent = null;
+        Doctor existedoctor = null;
 		try {
-			existestudent = dao.FindStudent(student_id);
+			existedoctor = dao.FindDoctor(doctor_id);
 		} catch (InstantiationException | IllegalAccessException e) {
 			e.printStackTrace();
 		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("Student.Form.Edit.jsp");
-		request.setAttribute("student", existestudent);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("Doctor.Form.Edit.jsp");
+		request.setAttribute("doctor", existedoctor);
 		dispatcher.include(request, response);
 	}
-
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		doGet(request, response);
 	}
 

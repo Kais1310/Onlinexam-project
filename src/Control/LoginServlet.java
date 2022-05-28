@@ -48,7 +48,7 @@ public class LoginServlet extends HttpServlet {
 				    
 				   }else if(request.getSession().getAttribute("admin")!=null) {
 					  
-					   RequestDispatcher dispatcher =request.getRequestDispatcher("Home.Admin.jsp");
+					   RequestDispatcher dispatcher =request.getRequestDispatcher("List_Student");
 					   dispatcher.include(request, response);
 				       
 				       }else {
@@ -131,7 +131,7 @@ public class LoginServlet extends HttpServlet {
    	   	   			        	HttpSession session = request.getSession();
    	   	   			        	session.setAttribute("admin", admin);
 
-   	   	   			            RequestDispatcher dispatcher = request.getRequestDispatcher("Home.Admin.jsp");
+   	   	   			            RequestDispatcher dispatcher = request.getRequestDispatcher("List_Student");
    	   	   				        dispatcher.forward(request, response);
 
    	   	   			           } else {

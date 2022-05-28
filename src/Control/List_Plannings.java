@@ -1,6 +1,8 @@
 package Control;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,40 +12,36 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Model.DAO;
-import Model.Student;
-
-
-@WebServlet("/Edit_Student")
-public class Edit_Student extends HttpServlet {
+import Model.Planning;
+ 
+@WebServlet("/List_Plannings")
+public class List_Plannings extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-   
-    public Edit_Student() {
+    
+    public List_Plannings() {
         super();
-       
     }
 
-	
+	 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		DAO dao = new DAO();
- 
-        int student_id=Integer.parseInt(request.getParameter("student_id")); 
 		
-        Student existestudent = null;
-		try {
-			existestudent = dao.FindStudent(student_id);
-		} catch (InstantiationException | IllegalAccessException e) {
-			e.printStackTrace();
-		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("Student.Form.Edit.jsp");
-		request.setAttribute("student", existestudent);
-		dispatcher.include(request, response);
+		 ArrayList<Planning> ListPlannings = null;
+		
+			try {
+				ListPlannings = dao.getPlanningExams();
+			} catch (InstantiationException | IllegalAccessException | SQLException e) {
+				
+				e.printStackTrace();
+			}
+		
+		
+		request.setAttribute("ListPlannings", ListPlannings);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("Plannings.List.jsp");
+		dispatcher.forward(request, response);
 	}
-
-	
+ 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		doGet(request, response);
 	}
 

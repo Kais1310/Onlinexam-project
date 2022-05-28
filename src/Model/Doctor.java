@@ -1,7 +1,7 @@
 package Model;
 
 public class Doctor {
-	private int Doctor_id;
+	private int doctor_id;
 	private String firstname;
 	private String lastname;
 	private String email;
@@ -15,7 +15,7 @@ public class Doctor {
 	
 	public Doctor(int doctor_id, String firstname, String lastname, String email, String module, String username, String password) {
 		super();
-		Doctor_id = doctor_id;
+		this.doctor_id = doctor_id;
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.email = email;
@@ -37,11 +37,11 @@ public class Doctor {
 
 
 	public int getDoctor_id() {
-		return Doctor_id;
+		return doctor_id;
 	}
 
 	public void setDoctor_id(int doctor_id) {
-		Doctor_id = doctor_id;
+		this.doctor_id = doctor_id;
 	}
 
 	public String getFirstname() {

@@ -1,8 +1,6 @@
 package Control;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,38 +8,27 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Model.DAO;
-import Model.Student;
 
-
-@WebServlet("/Edit_Student")
-public class Edit_Student extends HttpServlet {
+@WebServlet("/Delete_Doctor")
+public class Delete_Doctor extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
    
-    public Edit_Student() {
+    public Delete_Doctor() {
         super();
-       
+      
     }
 
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		DAO dao = new DAO();
- 
-        int student_id=Integer.parseInt(request.getParameter("student_id")); 
-		
-        Student existestudent = null;
+		int doctor_id = Integer.parseInt(request.getParameter("doctor_id"));
 		try {
-			existestudent = dao.FindStudent(student_id);
+			dao.DeleteDoctor(doctor_id);
 		} catch (InstantiationException | IllegalAccessException e) {
 			e.printStackTrace();
 		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("Student.Form.Edit.jsp");
-		request.setAttribute("student", existestudent);
-		dispatcher.include(request, response);
+		response.sendRedirect("List_Doctor");
 	}
 
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		doGet(request, response);

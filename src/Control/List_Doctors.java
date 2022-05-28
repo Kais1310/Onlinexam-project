@@ -1,6 +1,8 @@
 package Control;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,38 +12,38 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Model.DAO;
-import Model.Student;
+import Model.Doctor;
+ 
 
-
-@WebServlet("/Edit_Student")
-public class Edit_Student extends HttpServlet {
+@WebServlet("/List_Doctors")
+public class List_Doctors extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
    
-    public Edit_Student() {
+    public List_Doctors() {
         super();
        
     }
 
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		DAO dao = new DAO();
- 
-        int student_id=Integer.parseInt(request.getParameter("student_id")); 
+		List<Doctor> listDoctor = null;
 		
-        Student existestudent = null;
+		String search = request.getParameter("search");
+		
 		try {
-			existestudent = dao.FindStudent(student_id);
+			listDoctor = dao.getDoctors(search);
 		} catch (InstantiationException | IllegalAccessException e) {
 			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("Student.Form.Edit.jsp");
-		request.setAttribute("student", existestudent);
-		dispatcher.include(request, response);
+		
+		request.setAttribute("listDoctor", listDoctor);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("Doctor.List.jsp");
+		dispatcher.forward(request, response);
 	}
 
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		doGet(request, response);

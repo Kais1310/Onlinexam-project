@@ -8,52 +8,42 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Model.DAO;
-import Model.Student;
+import Model.Planning;
 
 
-@WebServlet("/Update_Student")
-public class Update_Student extends HttpServlet {
+@WebServlet("/Update_Planning")
+public class Update_Planning extends HttpServlet {
 	private static final long serialVersionUID = 1L;
    
-    public Update_Student() {
+    public Update_Planning() {
         super();
-       
     }
 
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-		
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
-      
-		int student_id = Integer.parseInt(request.getParameter("student_id"));
-		String firstname = request.getParameter("firstname");
-		String lastname =request.getParameter("lastname");
-		String email =request.getParameter("email");
+		int planning_id = Integer.parseInt(request.getParameter("planning_id"));
+		String module =request.getParameter("module");
 		String level =request.getParameter("level");
 		String speciality =request.getParameter("speciality");
-		 String department = request.getParameter("department");
-		int group = Integer.parseInt(request.getParameter("group"));
-		String username =request.getParameter("username");
-		String password =request.getParameter("password");
+		String date =request.getParameter("date");
+		String duration =request.getParameter("duration");
+		int adminID = Integer.parseInt(request.getParameter("adminID"));
 		
-		Student student = new Student(student_id, firstname,  lastname,  level,  speciality, department,  group,  email, username,  password) ;
+		Planning planning = new Planning(planning_id, module, level,  speciality, date,  duration,  adminID) ;
 
 			DAO dao = new DAO();					
 		 try {
-			dao.UpdateStudent(student);
+			dao.UpdatePlanning(planning);
 		} catch (InstantiationException | IllegalAccessException e) {
 			e.printStackTrace();
 		}
 				
 		
-		response.sendRedirect("List_Student");
+		response.sendRedirect("List_Plannings");
 	}
 
 }

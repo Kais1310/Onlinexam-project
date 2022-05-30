@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import Model.DAO;
 import Model.Doctor;
-import Model.Student;
+
 
 @WebServlet("/Create_Doctor")
 public class Create_Doctor extends HttpServlet {
@@ -56,7 +56,7 @@ public class Create_Doctor extends HttpServlet {
 			    out.print("<p>Doctor account added successfully!</p>");  
 			   		    
 	            
-			    RequestDispatcher dispatcher = request.getRequestDispatcher("Doctor.Form.Add.jsp");
+			    RequestDispatcher dispatcher = request.getRequestDispatcher("List_Doctors");
 				dispatcher.include(request, response);
 
 			

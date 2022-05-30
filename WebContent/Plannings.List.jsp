@@ -86,6 +86,7 @@
                                      <th scope="col">speciality</th>
                                      <th scope="col">date</th>
                                      <th scope="col">duration</th>
+                                     <th scope="col">salle</th>
                                      <th scope="col">action</th>
                                 </tr>
                             </thead>
@@ -98,6 +99,7 @@
 						            	<td><c:out value="${planning.speciality}" /></td>
 						            	<td><c:out value="${planning.date}" /></td>
 						            	<td><c:out value="${planning.duration}" /></td>
+						            	<td><c:out value="${planning.salle}" /></td>
 						            	<td><a href="Edit_Planning?planning_id=<c:out value='${planning.planning_id}' /> "><i class="bi bi-gear"></i></a> / <a href="delete_Planning?planning_id=<c:out value='${planning.planning_id}'/> "> <i class="bi bi-trash3"></i></a></td>
 						           	   
 						            </tr>

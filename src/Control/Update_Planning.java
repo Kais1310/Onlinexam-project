@@ -31,9 +31,10 @@ public class Update_Planning extends HttpServlet {
 		String speciality =request.getParameter("speciality");
 		String date =request.getParameter("date");
 		String duration =request.getParameter("duration");
+		String salle =request.getParameter("salle");
 		int adminID = Integer.parseInt(request.getParameter("adminID"));
 		
-		Planning planning = new Planning(planning_id, module, level,  speciality, date,  duration,  adminID) ;
+		Planning planning = new Planning(planning_id, module, level,  speciality, date,  duration,salle,  adminID) ;
 
 			DAO dao = new DAO();					
 		 try {

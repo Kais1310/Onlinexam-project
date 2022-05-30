@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
-<title>Doctor Form</title>
+<title>Teacher Form</title>
    <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -47,34 +47,34 @@
 	 		        
        
          <div class="Formule"> 
-           <form  action="Update_Doctor"  method="post">
-                   <input type="hidden" name="doctor_id" value="<c:out value="${doctor.doctor_id}"/>">
-                        <h2>Update Doctor account</h2>
-                <p>you need to enter the new information of the doctor to update the account</p>
+           <form  action="Update_Teacher"  method="post">
+                   <input type="hidden" name="teacher_id" value="<c:out value="${teacher.teacher_id}"/>">
+                        <h2>Update Teacher account</h2>
+                <p>you need to enter the new information of the teacher to update the account</p>
                 
             <div class="first">
                       <label>Firstname</label><br>
-                 <input type="text"  name="firstname" value="<c:out value="${doctor.firstname}"/>" required="required"/>
+                 <input type="text"  name="firstname" value="<c:out value="${teacher.firstname}"/>" required="required"/>
             <br>
 
                 <label>Email</label> <br>
-                <input type="text"   name="email" value="<c:out value="${doctor.email}"/>" required="required"/>
+                <input type="text"   name="email" value="<c:out value="${teacher.email}"/>" required="required"/>
             <br>
              <label>Username</label> <br> 
-                 <input type="text"  name="username" value="<c:out value="${doctor.username}"/>" required="required"/>
+                 <input type="text"  name="username" value="<c:out value="${teacher.username}"/>" required="required"/>
             <br>
                 
            </div>
            
            <div class="second">
                 <label>Lastname</label> <br>
-                <input type="text"   name="lastname" value="<c:out value="${doctor.lastname}"/>" required="required"/>
+                <input type="text"   name="lastname" value="<c:out value="${teacher.lastname}"/>" required="required"/>
                <br>
                 <label>Module</label> <br>
-                <input type="text"   name="module" value="<c:out value="${doctor.module}"/>"  required="required"/>
+                <input type="text"   name="module" value="<c:out value="${teacher.module}"/>"  required="required"/>
                <br>
                <label>Password</label> <br>
-                 <input type="text"  name="password" value="<c:out value="${doctor.password}"/>" required="required"/>
+                 <input type="text"  name="password" value="<c:out value="${teacher.password}"/>" required="required"/>
             </div>
                       <br>
                  <button type="submit" class="btn">Update account</button>

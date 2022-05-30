@@ -123,6 +123,9 @@
                         </select>
     
                         <br> 
+                         <label>Salle</label>
+                     <input type="text" name="salle" value="<c:out value='${planning.salle}' />" required="required">
+                         <br> 
                         <br>
                          <br>
                           <br>

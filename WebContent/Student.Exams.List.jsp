@@ -31,12 +31,12 @@
  <div class="d-flex" id="wrapper">
        
          <!-- Sidebar -->
-      <div class="bg-white" id="sidebar-wrapper">
+        <div class="bg-white" id="sidebar-wrapper">
             <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i
                     class="fas fa-check"></i><h1><span>e</span>-Exam</h1> <h3>Université Abd ELHamid Mehri</h3></div>
             <div class="list-group list-group-flush my-3">
-               <a href="Home.Student.jsp" class="list-group-item list-group-item-action bg-transparent second-text active"><i class="fas fa-home"></i> Home</a>
-                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="bi bi-bank2"></i>  Planning exams</a>        
+                <a href="Home.Student.jsp" class="list-group-item list-group-item-action bg-transparent second-text active"><i class="fas fa-home"></i> Home</a>
+                <a href="Student_ShowPlannings?level=<c:out value="${student.level}" />&speciality=<c:out value="${student.speciality}" />" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="bi bi-bank2"></i>  Planning exams</a>        
                 <a href="Student_List_Exams?level=<c:out value="${student.level}" />&speciality=<c:out value="${student.speciality}" />" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                     <i class="fas fa-list"></i> Session</a>
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-edit"></i> Annonces</a>
@@ -52,10 +52,7 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
-                <div class="d-flex align-items-center">
-                    <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
-                     
-                </div>
+               
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -68,7 +65,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle second-text fw-bold" href="#" id="navbarDropdown"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-user me-2"></i> ${student.username} ${student.lastname} 
+                                <i class="bi bi-person-circle"></i> ${student.firstname} ${student.lastname} 
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#">Profile</a></li>

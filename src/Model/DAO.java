@@ -640,7 +640,7 @@ public Teacher UpdateTeacher(Teacher teacher) throws InstantiationException, Ill
 	 try{  
 		 connectDB();
 		 
-	    	requete = "UPDATE `ExamOnline`.`Teacher` set `firstname`=?,`lastname`=?,`email`=?,`module`=?,`username`=?,`password`=? WHERE `doctor_id` = ?";
+	    	requete = "UPDATE `ExamOnline`.`Teacher` set `firstname`=?,`lastname`=?,`email`=?,`module`=?,`username`=?,`password`=? WHERE `teacher_id` = ?";
 	    						
 			stmt = connection.prepareStatement(requete);
 			
@@ -721,14 +721,14 @@ public Doctor FindDoctor(int doctor_id) throws InstantiationException, IllegalAc
 		ResultSet result = statement.executeQuery();			
 		
         while (result.next()) {
-        	 
+        	
             String firstname = result.getString("firstname");
             String lastname = result.getString("lastname");
             String email = result.getString("email");
             String module = result.getString("module");
             String username = result.getString("username");
             String password = result.getString("password");
-            doctor =new Doctor(firstname,lastname,module, email,username,password);
+            doctor =new Doctor(doctor_id, firstname,lastname,module, email,username,password);
       
         }
 		System.out.println("Find Doctor --- succés !");
@@ -764,7 +764,7 @@ public Teacher Findteacher(int teacher_id) throws InstantiationException, Illega
             String module = result.getString("module");
             String username = result.getString("username");
             String password = result.getString("password");
-            teacher =new Teacher(firstname,lastname,module, email,username,password);
+            teacher =new Teacher(teacher_id,firstname,lastname,module, email,username,password);
       
         }
 		System.out.println("Find teacher --- succés !");
@@ -1493,7 +1493,7 @@ public void AddPlanning(Planning planning) throws InstantiationException, Illega
 	try {
 		connectDB();
 				
-		stmt = connection.prepareStatement( "INSERT INTO `ExamOnline`.`Planning` (`module`, `level`, `speciality`, `date`, `duration`, `adminID`) VALUES (?, ?, ?, ?, ?, ?);");
+		stmt = connection.prepareStatement( "INSERT INTO `ExamOnline`.`Planning` (`module`, `level`, `speciality`, `date`, `duration`,`salle`, `adminID`) VALUES (?, ?, ?, ?, ?, ?, ?);");
 		
 		 
 		stmt.setString(1,planning.getModule());
@@ -1501,7 +1501,8 @@ public void AddPlanning(Planning planning) throws InstantiationException, Illega
 		stmt.setString(3,planning.getSpeciality());
 		stmt.setString(4,planning.getDate());
 		stmt.setString(5,planning.getDuration());
-		stmt.setInt(6,planning.getAdminID());
+		stmt.setString(6,planning.getSalle());
+		stmt.setInt(7,planning.getAdminID());
 			
 		  
 		 stmt.executeUpdate();
@@ -1553,7 +1554,7 @@ public Planning UpdatePlanning(Planning planning) throws InstantiationException,
 	 try{  
 		 connectDB();
 		 
-	    	requete = "UPDATE `ExamOnline`.`Planning` set `module`=?,`level`=?,`speciality`=?,`date`=?,`duration`=? where planning_id=?";
+	    	requete = "UPDATE `ExamOnline`.`Planning` set `module`=?,`level`=?,`speciality`=?,`date`=?,`duration`=?,`salle`=? where planning_id=?";
 	    						
 			stmt = connection.prepareStatement(requete);
 			
@@ -1562,7 +1563,8 @@ public Planning UpdatePlanning(Planning planning) throws InstantiationException,
 			stmt.setString(3,planning.getSpeciality());
 			stmt.setString(4,planning.getDate());
 			stmt.setString(5,planning.getDuration());
-			stmt.setInt(6, planning.getPlanning_id());
+			stmt.setString(6,planning.getSalle());
+			stmt.setInt(7,planning.getPlanning_id());
 			
 			 stmt.executeUpdate();
 			 System.out.println("Planning updated --succés !"); 
@@ -1599,9 +1601,10 @@ public Planning FindPlanning(int planning_id) throws InstantiationException, Ill
             String speciality = result.getString("speciality");
             String date = result.getString("date");
             String duration = result.getString("duration");
+            String salle = result.getString("salle");
             int adminID = result.getInt("adminID");
             
-             planning = new Planning( planning_id, module,  level,  speciality, date, duration, adminID) ;
+             planning = new Planning( planning_id, module,  level,  speciality, date, duration, salle, adminID) ;
         }
 		System.out.println("Find Planning byid -- succés !");
 	}catch (SQLException e) {
@@ -1611,6 +1614,8 @@ public Planning FindPlanning(int planning_id) throws InstantiationException, Ill
 	return planning;
 }
 
+
+// this method show the planning to the students
 
 public ArrayList<Planning> getPlannings(String level, String speciality) throws InstantiationException, IllegalAccessException, SQLException {
 
@@ -1624,7 +1629,7 @@ public ArrayList<Planning> getPlannings(String level, String speciality) throws 
 		connectDB();
 	
 		 
-				requete = "SELECT * FROM Planning where level=? and speciality=?";
+				requete = "SELECT planning_id, module, level, speciality, DATE_FORMAT(date,'%d-%m-%Y    /    %a,  : %H:%i') AS Date, duration, salle, adminID FROM Planning where level=? and speciality=? ORDER BY date";
 				statement = connection.prepareStatement(requete);
 				statement.setString(1, level);
 				statement.setString(2, speciality);
@@ -1641,6 +1646,7 @@ public ArrayList<Planning> getPlannings(String level, String speciality) throws 
 		        	planning.setSpeciality(result.getString("speciality"));
 		        	planning.setDate(result.getString("date"));
 		        	planning.setDuration(result.getString("duration"));
+		        	planning.setSalle(result.getString("salle"));
 		        	planning.setAdminID(result.getInt("adminID"));
 		        	
 		            
@@ -1659,6 +1665,10 @@ public ArrayList<Planning> getPlannings(String level, String speciality) throws 
 	return planninglist;
 	
 }
+
+
+// This method show the plannings created to the admin
+
 public ArrayList<Planning> getPlanningExams() throws InstantiationException, IllegalAccessException, SQLException {
 
 	
@@ -1671,7 +1681,7 @@ public ArrayList<Planning> getPlanningExams() throws InstantiationException, Ill
 		connectDB();
 	
 		 
-				requete = "SELECT * FROM Planning";
+				requete = "SELECT  planning_id, module, level, speciality, DATE_FORMAT(date, '%d-%m-%Y  %H:%i') AS Date, duration, salle, adminID FROM Planning";
 				statement = connection.prepareStatement(requete);
 				
 				
@@ -1687,6 +1697,7 @@ public ArrayList<Planning> getPlanningExams() throws InstantiationException, Ill
 		        	planning.setSpeciality(result.getString("speciality"));
 		        	planning.setDate(result.getString("date"));
 		        	planning.setDuration(result.getString("duration"));
+		        	planning.setSalle(result.getString("salle"));
 		        	planning.setAdminID(result.getInt("adminID"));
 		        	
 		            

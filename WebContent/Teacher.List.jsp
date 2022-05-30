@@ -5,7 +5,7 @@
 <html lang="en">
 
 <head>
-     <meta charset="UTF-8" />
+   <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -13,8 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style2.css" />
-     
-    <title>Student List</title>
+    <title>Teacher List</title>
     
     
 </head>
@@ -22,7 +21,7 @@
 <body>
     <div class="d-flex" id="wrapper">
         <!-- Sidebar -->
-       <div class="bg-white" id="sidebar-wrapper">
+        <div class="bg-white" id="sidebar-wrapper">
             <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i
                     class="fas fa-check"></i><h1><span>e</span>-Exam</h1> <h3>Université Abd ELHamid Mehri</h3></div>
             <div class="list-group list-group-flush my-3">
@@ -113,11 +112,11 @@
                     </div>
                 </div>
            
-           <a href ="Create_Student"><i class="bi bi-plus-circle"></i>  Add Student</a>
+           <a href ="Create_Teacher"><i class="bi bi-plus-circle"></i>  Add Teacher</a>
            
                 <div class="row my-5">
-                    <h2>Student list</h2> 
-                    <form action="List_Student" method="get"> <input type="search" placeholder="search.." name="search" class="search"></form><br><br>
+                    <h2>Teacher list</h2> 
+                    <form action="List_Teachers" method="get"> <input type="search" placeholder="search.." name="search" class="search"></form><br><br>
            
                     <div class="col">
                         <table class="table bg-white rounded shadow-sm  table-hover">
@@ -127,29 +126,23 @@
                                      <th scope="col">Firstname</th>
                                      <th scope="col">Lastname</th>
                                      <th scope="col">Email</th>
-                                     <th scope="col">level</th>
-                                     <th scope="col">speciality</th>
-                                     <th scope="col">department</th>
-                                     <th scope="col">Group</th>
+                                     <th scope="col">Module</th>
                                      <th scope="col">username</th>
                                      <th scope="col">password</th>
                                      <th scope="col">action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                 <c:forEach var="student" items="${listStudent}">
+                                 <c:forEach var="teacher" items="${listTeacher}">
 						             <tr>
-						              	<th scope="row"><c:out value="${student.student_id}" /></th>
-							            <td><c:out value="${student.firstname}" /></td>
-						             	<td><c:out value="${student.lastname}" /></td>
-						             	<td><c:out value="${student.email}" /></td>
-					             		<td><c:out value="${student.level}" /></td>
-						            	<td><c:out value="${student.speciality}" /></td>
-						            	<td><c:out value="${student.department}" /></td>
-						            	<td><c:out value="${student.group}" /></td>
-						            	<td><c:out value="${student.username}" /></td>
-						            	<td><c:out value="${student.password}" /></td>
-						            	<td><a href="Edit_Student?student_id=<c:out value='${student.student_id}' /> "><i class="bi bi-gear"></i></a> / <a href="Delete_Student?student_id=<c:out value='${student.student_id}'/> "> <i class="bi bi-trash3"></i></a></td>
+						              	<th scope="row"><c:out value="${teacher.teacher_id}" /></th>
+							            <td><c:out value="${teacher.firstname}" /></td>
+						             	<td><c:out value="${teacher.lastname}" /></td>
+						             	<td><c:out value="${teacher.email}" /></td>
+					             		<td><c:out value="${teacher.module}" /></td>
+						            	<td><c:out value="${teacher.username}" /></td>
+						            	<td><c:out value="${teacher.password}" /></td>
+						            	<td><a href="Edit_Teacher?teacher_id=<c:out value='${teacher.teacher_id}' /> "><i class="bi bi-gear"></i></a> / <a href="Delete_Teacher?teacher_id=<c:out value='${teacher.teacher_id}'/> "> <i class="bi bi-trash3"></i></a></td>
 						           	   
 						            </tr>
 				            	</c:forEach>

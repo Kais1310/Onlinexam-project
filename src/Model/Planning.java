@@ -7,13 +7,14 @@ public class Planning {
 	public String speciality;
 	public String date;
 	public String duration;
+	public String salle;
 	public int adminID;
 	
 	public Planning() {
 		super();
 	}
 
-	public Planning(int planning_id, String module, String level, String speciality, String date, String duration,
+	public Planning(int planning_id, String module, String level, String speciality, String date, String duration, String salle,
 			int adminID) {
 		super();
 		this.planning_id = planning_id;
@@ -22,16 +23,18 @@ public class Planning {
 		this.speciality = speciality;
 		this.date = date;
 		this.duration = duration;
+		this.salle = salle;
 		this.adminID = adminID;
 	}
 
-	public Planning(String module, String level, String speciality, String date, String duration, int adminID) {
+	public Planning(String module, String level, String speciality, String date, String duration, String salle, int adminID) {
 		super();
 		this.module = module;
 		this.level = level;
 		this.speciality = speciality;
 		this.date = date;
 		this.duration = duration;
+		this.salle = salle;
 		this.adminID = adminID;
 	}
 
@@ -81,6 +84,14 @@ public class Planning {
 
 	public void setDuration(String duration) {
 		this.duration = duration;
+	}
+
+	public String getSalle() {
+		return salle;
+	}
+
+	public void setSalle(String salle) {
+		this.salle = salle;
 	}
 
 	public int getAdminID() {

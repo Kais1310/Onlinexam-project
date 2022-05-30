@@ -124,6 +124,9 @@
     
                         <br> 
                         <br>
+                        <label>Salle</label>
+                     <input type="text" name="salle" required="required">
+                         <br> 
                          <br>
                           <br>
                           

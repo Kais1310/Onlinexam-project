@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Home Doctor</title>
+<title>create exam</title>
   <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -33,12 +33,12 @@
             <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i
                     class="fas fa-check"></i><h1><span>e</span>-Exam</h1> <h3>Université Abd ELHamid Mehri</h3></div>
             <div class="list-group list-group-flush my-3">
-                <a href="Home.Doctor.jsp" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                <a href="Home.Doctor.jsp" class="list-group-item list-group-item-action bg-transparent second-text active"><i
                         class="fas fa-home"></i> Home</a>
-                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="bi bi-bank2"></i>  Bank</a>        
+                <a href="List_Questions_banque?module=<c:out value="${doctor.module}" />" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="bi bi-bank2"></i>  Bank</a>        
                 <a href="List_Exams?doc_id=<c:out value="${doctor.doctor_id}" />" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-list"></i> Exams</a>
-                 <a href="Createxam?doctor_id=<c:out value="${doctor.doctor_id}" />" class="list-group-item list-group-item-action bg-transparent second-text active"><i
+                 <a href="Createxam?doctor_id=<c:out value="${doctor.doctor_id}" />" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-edit"></i> Create exam</a>
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-check"></i> Notes</a> 
@@ -56,7 +56,10 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
-               
+                <div class="d-flex align-items-center">
+                    <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
+                     
+                </div>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -89,7 +92,7 @@
                         <h2>Create Exam</h2>
                  <p>First u need to enter the informations of the exam </p>
                  <div class="first">
-                     <label>Module</label>
+                     <label>Module </label>
                           <select class="role" name="module" required="required"  > 
                                <option ></option>
                                <option ><c:out value="${doctor.module}" /></option>                        
@@ -108,11 +111,12 @@
                          </select>
                         <br><br>
 
-                   Number of questions :  <input type="text" class="nbr_questions" name="nbr_questions" required="required" >
+                   Number of questions:  <input type="text" class="nbr_questions" name="nbr_questions" required="required" >
                         <br>
                        </div>
                        <div class="second">
                      <strong> Level </strong><br><br>
+                     
                          <select class="role" name="level" required="required"  > 
                                <option ></option>
                                <option >L1</option>

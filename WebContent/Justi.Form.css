@@ -1,0 +1,341 @@
+body{
+    font-family:  sans-serif;
+    font-weight: 800;
+ }
+ 
+ .Formule{
+    width: 920px;
+    max-height: 700px;
+    min-height: 400px;
+margin-left: 8%;
+margin-top: 2%;
+    background-color: white;
+    border-radius: 3px;
+    position:static;
+} 
+ .Formule i{
+    font-size: 30px;
+    color: rgba(0, 134, 252, 0.99);
+    cursor: pointer;
+    margin-left: 1%;
+  
+ }
+ .Formule2{
+    width: 920px;
+    max-height: 700px;
+    min-height: 400px;
+margin-left: 8%;
+margin-top: 5%;
+    background-color: white;
+    border-radius: 3px;
+    position:static;
+} 
+ .Formule3{
+    width: 1000px;
+    max-height: 700px;
+    min-height: 400px;
+margin-left: 8%;
+margin-top: 2%;
+    background-color: white;
+    border-radius: 3px;
+    position:static;
+}
+
+.first{
+margin-top: 4%;
+margin-left: 7%;
+left: 2%;
+width: 50%;
+font-weight: 400;
+}
+ .second{
+    margin-left: 58%;
+    margin-top: -34.8%;
+    font-weight: 400;
+}
+.first1{
+margin-top: 4%;
+margin-left: 3%;
+left: 2%;
+width: 50%;
+font-weight: 400;
+}
+ .second1{
+    margin-left:58%;
+    margin-top: -48.7%;
+    font-weight: 400;
+}
+ .first2{
+margin-top: 4%;
+margin-left: 3%;
+left: 2%;
+width: 50%;
+font-weight: 400;
+}
+ .second2{
+    margin-left:58%;
+    margin-top: -51.5%;
+    font-weight: 400;
+}
+.first4{
+margin-top: 4%;
+margin-left: 7%;
+left: 2%;
+width: 50%;
+font-weight: 400;
+}
+ .second4{
+    margin-left: 58%;
+    margin-top: -33%;
+    font-weight: 400;
+}
+ h2{
+    text-align: center;
+    padding-top: 15px;
+    color:rgba(0, 134, 252, 0.99);
+
+}
+form{
+    background-color: white;
+    width: 920px;
+    border-radius: 8px;
+    padding: 20px 40px;
+    margin-left: 5%;
+   
+
+}
+span{
+    color: black;
+}
+ 
+
+form label{
+    display: flex;
+    margin-top: 10px;
+    font-size: 18px;
+    
+}
+form input{
+    
+    width: 300px;
+    padding: 7px;
+    border: none;
+    border: 1px solid gray;
+    border-radius: 6px;
+    outline: none;
+    color:black;
+    
+}
+
+.nbr_questions{
+    width: 100px;
+    height :30px;
+    padding: 7px;
+    border: none;
+    border: 1px solid gray;
+    border-radius: 6px;
+    outline: none;
+    color:black;
+
+}
+input:after{
+        cursor: pointer;
+        color: #ffff;
+
+    }
+input:hover{
+        background-color: transparent;
+        border-color: rgba(0, 134, 252, 0.6);
+        border-width: 1px;
+    }
+input:focus{
+        background-color: transparent;
+        border-color: rgba(0, 134, 252, 0.99);
+        border-width: 1px;
+    }
+.btn1 {
+   
+    transition-duration: 0.3s;
+     width: 20%;
+    border-radius: 20px;
+    background-color:   rgba(0, 134, 252, 0.99);
+    padding: 10px;
+    font-weight: bold;
+    outline: none;
+    cursor:pointer;color: #ffff;
+    margin: 30px 15px 15px 5px;
+    border: none;
+    text-align: center;
+    font-family: sans-serif;
+    font-weight: 500;
+   margin-left:39%;
+    font-size: 18px;
+
+}
+.btn1:hover {
+    background-color: transparent;
+    border: 2px solid rgba(0, 134, 252, 0.99);
+    cursor: pointer;
+    color: black;
+}
+.btn {
+   
+    transition-duration: 0.3s;
+     width: 20%;
+    border-radius: 20px;
+    background-color:   rgba(0, 134, 252, 0.99);
+    padding: 10px;
+    font-weight: bold;
+    outline: none;
+    cursor:pointer;color: #ffff;
+    margin: 30px 15px 15px 5px;
+    border: none;
+    text-align: center;
+    font-family: sans-serif;
+    font-weight: 500;
+   margin-left:37%;
+    font-size: 18px;
+
+}
+.btn:hover {
+    background-color: transparent;
+    border: 2px solid rgba(0, 134, 252, 0.99);
+    cursor: pointer;
+
+}
+.btn3 {
+   
+    transition-duration: 0.3s;
+     width: 20%;
+    border-radius: 20px;
+    background-color:   rgba(0, 134, 252, 0.99);
+    padding: 10px;
+    font-weight: bold;
+    outline: none;
+    cursor:pointer;color: #ffff;
+    margin: 30px 15px 15px 5px;
+    border: none;
+    text-align: center;
+    font-family:  sans-serif;
+    font-weight: 500;
+   margin-left:41%;
+    font-size: 18px;
+
+}
+.btn3:hover {
+    background-color: transparent;
+    border: 2px solid rgba(0, 134, 252, 0.99);
+    cursor: pointer;
+
+}
+.btn4 {
+   
+    transition-duration: 0.3s;
+     width: 20%;
+    border-radius: 20px;
+    background-color:   rgba(0, 134, 252, 0.99);
+    padding: 10px;
+    font-weight: bold;
+    outline: none;
+    cursor:pointer;color: #ffff;
+    margin: 30px 15px 15px 5px;
+    border: none;
+    text-align: center;
+    font-family:  sans-serif;
+    font-weight: 500;
+   margin-left:41%;
+    font-size: 18px;
+
+}
+.btn4:hover {
+    background-color: transparent;
+    border: 2px solid rgba(0, 134, 252, 0.99);
+    cursor: pointer;
+color: black;
+}
+
+p{
+    text-align: center;
+    padding: top 20px; ;
+    font-size: 18px;
+}
+.role{
+width: 200px;
+font-size: 15px;
+padding: 7px ;
+border:0.2px rgba(0,0,0,0.2) solid;
+border-radius: 6px;
+
+
+
+    }
+    .role::after{
+        cursor: pointer;
+        color: #ffff;
+
+    }
+    option{
+        font-size: 18px;
+        font-family:  sans-serif;
+            }
+
+    .role:hover{
+        background-color: transparent;
+        border-color: rgba(0, 134, 252, 0.99);
+        border-width: 1px;
+    }
+    strong{
+     
+        font-size: 18px;
+        float: left;
+        font-weight: 400;
+        display: flex;
+        margin-top: 10px;
+        
+
+    }
+    a :hover{
+        color: rgba(0, 134, 252, 0.99);
+    }
+     h3{
+        font-size: 10px;
+        color: black;
+    }
+    h4{
+        font-size: 22px;
+color:red;
+    }     
+.box{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 400px;
+}
+.card{
+	height: 340px;
+	width: 335px;
+	padding: 20px 35px;
+	background: #191919;
+	border-radius: 20px;
+	margin: 15px;
+	position: relative;
+	overflow: hidden;
+	text-align: center;}
+	
+.box :hover{
+	background-color:unset;
+}
+.card i{
+	font-size: 50px;
+	display: block;
+	text-align: center;
+	margin: 25px 0px;
+	color:rgba(0, 134, 252, 0.99) ;
+
+}
+
+.fl{
+
+   
+    background-color:   rgba(0, 134, 252, 0.99);
+}

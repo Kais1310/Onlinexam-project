@@ -1,0 +1,246 @@
+body{
+    
+}
+h1{
+  text-align: center;
+  font-family: 'Quicksand',sans-serif;
+}
+.form-style {
+
+  margin:10px auto;
+  width: 600px;
+  padding: 20px 12px 10px 20px;
+  font: 18px  sans-serif;
+
+}
+.form-style td .hello{
+  padding: 0;
+  display: block;
+  list-style: none;
+  margin: 10px 0 0 0;
+  margin-bottom:20px;
+}
+.form-style label{
+  margin:0 0 5px  0 ;
+
+  padding:0px;
+margin-left: 15%;
+
+  display:block;
+ 
+  color: black;
+  font-weight: 400;
+
+}
+
+.form-style .required, .value{
+  color:red;
+}  
+
+.form-style input[type=submit], .form-style input[type=reset]{
+ transition-duration: 0.3s;
+     width: 50%;
+    border-radius: 20px;
+    background-color:   rgba(0, 134, 252, 0.99);
+    padding: 10px;
+    font-weight: bold;
+    outline: none;
+    cursor:pointer;color: #ffff;
+    margin: 30px 15px 15px 5px;
+    border: none;
+    text-align: center;
+    font-family:  sans-serif;
+    font-weight: 500;
+   margin-left:84%;
+    font-size: 18px;
+
+  font-family:  sans-serif;
+}
+
+
+.form-style input[type=submit]:hover, .form-style input[type=reset]:hover{
+  background-color: transparent;
+    border: 2px solid rgba(0, 134, 252, 0.99);
+    cursor: pointer;
+color: black;
+font-weight: 700;
+}
+.form-style .field-textarea{
+  height: 150px;
+}
+
+.form-style input[type=text],.form-style input[type=email],textarea{
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  border:1px solid rgba(0,0,0,0.3);
+  padding: 7px;
+  margin:0px;
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+  outline: none;  
+}
+.form-style .long{
+  width: 100%;
+}
+.form-style input[type=text]:focus, .form-style input[type=email]:focus,.form-style textarea:focus{
+ 
+
+  border: 1px solid rgba(0, 134, 252, 0.99);
+}
+
+.form-style input[type=text]:hover, .form-style input[type=email]:hover,.form-style textarea:hover{
+ 
+
+  border: 1px solid rgba(0, 134, 252, 0.99);
+}
+ 
+.error{
+  color: #D8000C;
+  background-color: #FFBABA;
+}
+
+:root {
+  --main-bg-color: 	#dcdcdc;
+  --main-text-color:rgba(0, 134, 252, 0.99);
+  --second-text-color: #bbbec5;
+  --second-bg-color: #c1efde;
+}
+span{
+    color: black;
+}
+ h3{
+        font-size: 10px;
+        color: black;
+    }
+    body{
+      font-family:  sans-serif;
+
+    }
+.primary-text {
+	color:rgba(0, 134, 252, 0.99);
+	}
+
+.second-text {
+  color: #bbbec5;
+}
+
+.primary-bg {
+  background-color: 	#dcdcdc;
+}
+
+.secondary-bg {
+  background-color:  #c1efde;
+}
+
+.rounded-full {
+  border-radius: 100%;
+}
+
+#wrapper {
+  overflow-x: hidden;
+   background-color: #f3f5f9;
+  
+}
+
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  -webkit-transition: margin 0.25s ease-out;
+  -moz-transition: margin 0.25s ease-out;
+  -o-transition: margin 0.25s ease-out;
+  transition: margin 0.25s ease-out;
+  
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+  width: 15rem;
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
+
+#menu-toggle {
+  cursor: pointer;
+}
+
+.list-group-item {
+  border: none;
+  padding: 20px 30px;
+}
+
+.list-group-item.active {
+  background-color: transparent;
+	color:rgba(0, 134, 252, 0.99);
+  font-weight: bold;
+  border: none;
+}
+
+@media (min-width : 750px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+  .form
+	{
+		width: 95%;
+		margin: 0 auto;
+	}
+
+}
+
+.search{
+	 vertical-align :middle;
+	  border : 2px solid #2980b9 ;
+	  width:260px;
+	  height:37px;
+	  padding :0px 5px;
+      border-radius:15px;
+	  font-size:18px;
+	  color:#424242;
+	  font-weight:500;
+	  left: 850px;
+	  position:relative;
+}
+
+.search:focus{
+   outline:none;
+}
+
+.class{
+	 width: 920px;
+   min-height: 500px;
+    height: auto;
+	background-color:white;
+ margin:0px 50px 50px 90px ;
+	padding-top:8px;
+  border-radius: 3px;
+   box-shadow: 0 10px 25px rgba(92, 99, 105, .2);
+}
+  
+form h2{
+  
+color:rgba(0, 134, 252, 0.99);
+text-align: center;
+}

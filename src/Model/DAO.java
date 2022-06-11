@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import org.springframework.security.crypto.bcrypt.BCrypt;
+
 
 public class DAO {
 	 
@@ -43,15 +45,15 @@ public class DAO {
 			
 			connectDB();
 			
-			requete = "SELECT * FROM Student WHERE username = ? and password = ?";
+			requete = "SELECT * FROM Student WHERE username = ?";
 			statement = connection.prepareStatement(requete);
 			statement.setString(1, username);
-			statement.setString(2, password);
+			//statement.setString(2, password);
 		
 			
 			ResultSet result = statement.executeQuery();			
 			
-	        if (result.next()) {
+	        if (result.next()&& BCrypt.checkpw(password, result.getString("password"))) {
 	            student = new Student();
 	            student.setStudent_id(result.getInt("student_id"));
 	            student.setFirstname(result.getString("firstname"));
@@ -475,6 +477,9 @@ public void AddStudent(Student student) throws InstantiationException, IllegalAc
 		requete = "INSERT INTO `ExamOnline`.`Student` (`firstname`, `lastname`, `email`, `level`, `speciality`,`department`, `group`, `username`, `password`) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?);";		
 		stmt = connection.prepareStatement(requete);
 		
+		String pw_hash = BCrypt.hashpw(student.getPassword(), BCrypt.gensalt());
+
+		
 		stmt.setString(1,student.getFirstname());
 		stmt.setString(2,student.getLastname());
 		stmt.setString(3,student.getEmail());
@@ -483,7 +488,7 @@ public void AddStudent(Student student) throws InstantiationException, IllegalAc
 		stmt.setString(6,student.getDepartment());
 		stmt.setInt(7,student.getGroup());
 		stmt.setString(8,student.getUsername());
-		stmt.setString(9,student.getPassword());
+		stmt.setString(9,pw_hash);
 		
 		stmt.executeUpdate();
 		stmt.close();
@@ -851,7 +856,7 @@ public boolean DeleteTeacher(int teacher_id) throws InstantiationException, Ille
 }
 
 
-public void AddQuestion(Question question) throws InstantiationException, IllegalAccessException {
+public void Doctor_AddQuestion(Question question) throws InstantiationException, IllegalAccessException {
 	
 	
 	PreparedStatement stmt;
@@ -859,7 +864,7 @@ public void AddQuestion(Question question) throws InstantiationException, Illega
 	try {
 		connectDB();
 				
-		stmt = connection.prepareStatement( "INSERT INTO `ExamOnline`.`Question` (`module`, `content`, `choice1`, `choice2`, `choice3`, `choice4`, `right_answer`, `type`,`banque_id`,`doctorID`,`teacherID`) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?,?,?);");
+		stmt = connection.prepareStatement( "INSERT INTO `ExamOnline`.`Question` (`module`, `content`, `choice1`, `choice2`, `choice3`, `choice4`, `right_answer`, `type`,`banque_id`,`doctorID`) VALUES ( ?, ?, ?, ?, ?, ?, ?,?,?,?);");
 		
 		stmt.setString(1,question.getModule());
 		stmt.setString(2,question.getContent());
@@ -871,7 +876,7 @@ public void AddQuestion(Question question) throws InstantiationException, Illega
 		stmt.setString(8,question.getType());	
 		stmt.setInt(9,question.getBanque_id());
 		stmt.setInt(10,question.getDoctorID());
-		stmt.setInt(11,question.getTeacherID());		
+				
 		  
 		 stmt.executeUpdate();
 		 
@@ -990,7 +995,7 @@ public Question UpdateQuestion(Question question) throws InstantiationException,
 	 try{  
 		 connectDB();
 		 
-	    	requete = "UPDATE `ExamOnline`.`Question` set `module`=?,`content`=?,`choice1`=?,`choice2`=?,`choice3`=?,`choice4`=?,`right_answer`=?,`type`=?,`banque_id`=?,`doctorID`=?,`teacherID`=?, WHERE `question_id` = ?";
+	    	requete = "UPDATE `ExamOnline`.`Question` set `module`=?,`content`=?,`choice1`=?,`choice2`=?,`choice3`=?,`choice4`=?,`right_answer`=?,`type`=? WHERE `question_id` = ?";
 	    						
 			stmt = connection.prepareStatement(requete);
 			
@@ -1001,11 +1006,8 @@ public Question UpdateQuestion(Question question) throws InstantiationException,
 			stmt.setString(5,question.getChoice3());
 			stmt.setString(6,question.getChoice4());
 			stmt.setString(7,question.getRight_answer());
-			stmt.setString(8,question.getType());	
-			stmt.setInt(9,question.getBanque_id());
-			stmt.setInt(10,question.getDoctorID());
-			stmt.setInt(11,question.getTeacherID());		
-			stmt.setInt(12,question.getQuestion_id());
+			stmt.setString(8,question.getType());			
+			stmt.setInt(9,question.getQuestion_id());
 			
 
 			
@@ -1091,7 +1093,7 @@ public Exam UpdateExam(Exam exam) throws InstantiationException, IllegalAccessEx
 	 try{  
 		 connectDB();
 		 
-	    	requete = "UPDATE `ExamOnline`.`Exam` set `module`=?,`level`=?,`speciality`=?,`type`=?,`date`=?,`duration`=?,`nbr_questions`=? ";
+	    	requete = "UPDATE `ExamOnline`.`Exam` set `module`=?,`level`=?,`speciality`=?,`type`=?,`date`=?,`duration`=?,`nbr_questions`=? where exam_id=?";
 	    						
 			stmt = connection.prepareStatement(requete);
 			
@@ -1103,6 +1105,7 @@ public Exam UpdateExam(Exam exam) throws InstantiationException, IllegalAccessEx
 			stmt.setString(5,exam.getDate());
 			stmt.setString(6,exam.getDuration());
 			stmt.setInt(7,exam.getNbr_questions());
+			stmt.setInt(8,exam.getExam_id());
 			
 			 stmt.executeUpdate();
 			 System.out.println("exam updated --succés !"); 
@@ -1718,6 +1721,269 @@ public ArrayList<Planning> getPlanningExams() throws InstantiationException, Ill
 }
 
 
+public void AddJustification(Justification justification) throws InstantiationException, IllegalAccessException {
+	
+	
+	PreparedStatement stmt;
+	try {
+		connectDB();
+				
+		stmt = connection.prepareStatement( "INSERT INTO `ExamOnline`.`Justification` (`firstname`,`lastname`,`level`,`speciality`,`group`,`module`, `date_absence`, `seance`, `justification`,`fileName`,`savePath`, `studentID`) VALUES (?,?,?,?,?,?, ?, ?, ?, ?, ?, ?);");
+		
+		stmt.setString(1,justification.getFirstname());
+		stmt.setString(2,justification.getLastname());
+		stmt.setString(3,justification.getLevel());
+		stmt.setString(4,justification.getSpeciality());
+		stmt.setInt(5,justification.getGroup());
+		stmt.setString(6,justification.getModule());
+		stmt.setString(7,justification.getDate_absence());
+		stmt.setString(8,justification.getSeance());
+		stmt.setString(9,justification.getJustification());
+		stmt.setString(10,justification.getFileName());
+		stmt.setString(11,justification.getSavePath());
+		stmt.setInt(12,justification.getStudentID());
+		
+		 stmt.executeUpdate();
+		 
+		stmt.close();
+		 
+		
+		System.out.println("Justification added --succés !");
+		} catch (SQLException e) {
+			System.out.println(e);
+		   }
+	 
 	
 }
+
+public ArrayList<Justification> getJustifications() throws InstantiationException, IllegalAccessException, SQLException {
+
+	
+	String requete;
+	PreparedStatement statement;
+	
+	
+	ArrayList<Justification> JustificationList = new ArrayList<Justification>();
+	try {
+		connectDB();
+	
+		 
+				requete = "SELECT * FROM `ExamOnline`.`Justification`;";
+				statement = connection.prepareStatement(requete);
+				
+				
+				ResultSet result = statement.executeQuery();			
+				
+		        while (result.next()) {
+		        	
+		        	Justification justification = new Justification();
+		        	 
+		        	justification.setJustification_id(result.getInt("Justification_id"));
+		        	justification.setFirstname(result.getString("firstname"));
+		        	justification.setLastname(result.getString("lastname"));
+		        	justification.setLevel(result.getString("level"));
+		        	justification.setSpeciality(result.getString("speciality"));
+		        	justification.setGroup(result.getInt("group"));
+		        	justification.setModule(result.getString("module"));
+		        	justification.setDate_ajoute(result.getString("date_ajoute"));
+		        	justification.setDate_absence(result.getString("date_absence"));
+		        	justification.setSeance(result.getString("seance"));
+		        	justification.setJustification(result.getString("justification"));
+		        	justification.setFileName(result.getString("fileName"));
+		        	justification.setSavePath(result.getString("savePath"));
+		        	justification.setStudentID(result.getInt("studentID"));
+		        	
+		            
+		        	JustificationList.add(justification);
+		        	 
+		        	
+		        }
+				
+			
+	        
+			statement.close();
+
+			System.out.println("Get Justifications -- succés !");
+	  }catch(Exception e){
+	    	e.printStackTrace();
+	    }
+
+	return JustificationList;
+	
+}
+
+public Justification FindJustification(int justification_id) throws InstantiationException, IllegalAccessException {
+	String requete;
+	PreparedStatement statement;
+	
+	Justification justificationInfo = null;
+	
+	
+	try {
+		
+		connectDB();
+		requete = "SELECT * FROM Justification where justification_id=?";
+		statement = connection.prepareStatement(requete);
+		
+		statement.setInt(1, justification_id);
+		ResultSet result = statement.executeQuery();			
+		
+        while (result.next()) {
+        	 
+            String firstname = result.getString("firstname");
+            String lastname = result.getString("lastname");
+            String level = result.getString("level");
+            String speciality = result.getString("speciality");
+            int group = result.getInt("group");
+            String module = result.getString("module");
+            String date_ajoute = result.getString("date_ajoute");
+            String date_absence = result.getString("date_absence");
+            String seance = result.getString("seance");
+            String justification = result.getString("justification");
+            String fileName = result.getString("fileName");
+            String savePath = result.getString("savePath");
+            int studentID = result.getInt("studentID");
+            justificationInfo =new Justification(justification_id,firstname,lastname,level,speciality,group,module,date_ajoute,date_absence,seance,justification,fileName,savePath,studentID);
+      
+        }
+		System.out.println("Find justificationInfo --- succés !");
+	}catch (SQLException e) {
+		System.out.println(e);
+	}
+	
+	return justificationInfo;
+}
+
+
+public boolean DeleteJustification(int justification_id) throws InstantiationException, IllegalAccessException{ 
+	
+	boolean rowDelete = false;
+	String requete;
+	PreparedStatement stmt;
+	connectDB();
+	
+	 try{  
+		   
+	    	requete = "delete from Justification where justification_id=?";			
+			stmt = connection.prepareStatement(requete);
+			 stmt.setInt(1,justification_id);
+			
+			rowDelete= stmt.executeUpdate()>0;
+			stmt.close(); 
+			
+	        connection.close();   
+	        System.out.println("Delete justification  --succés !");
+	    }catch(Exception e){
+	    	e.printStackTrace();
+	    }
+	return rowDelete;
+		
+}
+public void AddAnnonce(Annonce annonce) throws InstantiationException, IllegalAccessException {
+	String requete;
+	PreparedStatement stmt;
+	
+	connectDB();
+
+	try {
+
+		requete = "INSERT INTO `ExamOnline`.`Annonces` (titre,content,adminID) VALUES(?,?,?)";			
+		stmt = connection.prepareStatement(requete);
+		
+		
+		stmt.setString(1,annonce.getTitre());
+		stmt.setString(2,annonce.getContent());
+		stmt.setInt(3, annonce.adminID);
+
+		
+		
+		stmt.executeUpdate();
+		stmt.close();
+
+		System.out.println("Annonce Inserted !");
+	} catch (SQLException e) {
+		System.out.println(e);
+	}
+}
+public ArrayList<Annonce> getAnnonce() throws InstantiationException, IllegalAccessException {
+	
+	String requete;
+	PreparedStatement statement;
+	
+	Annonce annonce = null;
+	ArrayList<Annonce> ListAnnonces = new ArrayList<Annonce>();
+	
+	try {
+		
+		connectDB();
+		
+		requete = "SELECT * FROM Annonces";
+		statement = connection.prepareStatement(requete);
+		
+		
+		ResultSet result = statement.executeQuery();			
+		
+        while (result.next()) {
+        	
+        	annonce = new Annonce();
+        	annonce.setAnnonce_id(result.getInt("annonce_id"));
+        	annonce.setContent(result.getString("content"));
+        	annonce.setTitre(result.getString("titre"));
+        	annonce.setDate_ajoute(result.getString("date_ajoute"));
+        	annonce.setAdminID(result.getInt("adminID"));
+            
+            
+            
+        	ListAnnonces.add(annonce);
+        }
+        
+		statement.close();
+
+		System.out.println("Get List Annonces --- succed !");
+	} catch (SQLException e) {
+		System.out.println(e);
+	}
+	
+	return ListAnnonces;
+}
+
+public Annonce FindAnnonce(int annonce_id) throws InstantiationException, IllegalAccessException {
+	String requete;
+	PreparedStatement statement;
+	
+	Annonce annonce = null;
+	
+	
+	try {
+		
+		connectDB();
+		
+		requete = "SELECT * FROM `ExamOnline`.`Annonces` where annonce_id=?";
+		statement = connection.prepareStatement(requete);
+		
+		statement.setInt(1,annonce_id);
+		ResultSet result = statement.executeQuery();			
+		
+        while (result.next()) {
+        	
+        	 
+        	String titre = result.getString("titre");
+            String content = result.getString("content");
+            String date_ajoute = result.getString("date_ajoute");
+            int adminID = result.getInt("adminID");
+            
+            annonce =new Annonce(titre,content,date_ajoute,adminID);
+      
+        }
+		System.out.println("Find Annonce byid -- succés !");
+	}catch (SQLException e) {
+		System.out.println(e);
+	}
+	
+	return annonce;
+}
+	
+}
+
+
 

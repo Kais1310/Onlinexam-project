@@ -1,0 +1,395 @@
+:root {
+  --main-bg-color:  #dcdcdc;
+  --main-text-color:rgba(0, 134, 252, 0.99);
+  --second-text-color: #bbbec5;
+  --second-bg-color: #c1efde;
+}
+.first5{
+margin-top: 4%;
+margin-left: 7%;
+left: 2%;
+width: 50%;
+font-weight: 400;
+}
+.second5{
+    margin-left: 58%;
+    margin-top: -34.8%;
+    font-weight: 400;
+}
+}
+h4{
+        font-size: 22px;
+color:red;
+    } 
+    
+span{
+    color: black;
+}
+h2{
+  text-align: center;
+    padding-top: 15px;
+    color: rgba(0, 134, 252, 0.99);
+}
+ .d-flex h3{
+        font-size: 10px;
+        color: black;
+        text-align: center;
+    }
+    body{
+      font-family: 'Quicksand', sans-serif;
+
+    }
+   .d-flex h1{
+       font-family: 'Quicksand', sans-serif;
+    }
+   
+    .cont :hover{
+      background-color: black;
+    }
+.primary-text {
+  color:rgba(0, 134, 252, 0.99);
+  }
+
+.second-text {
+  color: #bbbec5;
+}
+
+.primary-bg {
+  background-color:   #dcdcdc;
+}
+
+.secondary-bg {
+  background-color:  #c1efde;
+}
+
+.rounded-full {
+  border-radius: 100%;
+}
+
+#wrapper {
+  overflow-x: hidden;
+   background-color: #f3f5f9;
+  
+}
+
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  -webkit-transition: margin 0.25s ease-out;
+  -moz-transition: margin 0.25s ease-out;
+  -o-transition: margin 0.25s ease-out;
+  transition: margin 0.25s ease-out;
+  
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+  width: 15rem;
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
+
+#menu-toggle {
+  cursor: pointer;
+}
+
+.list-group-item {
+  border: none;
+  padding: 20px 30px;
+}
+
+.list-group-item.active {
+  background-color: transparent;
+  color:rgba(0, 134, 252, 0.99);
+  font-weight: bold;
+  border: none;
+}
+
+@media (min-width : 750px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+  .form
+  {
+    width: 95%;
+    margin: 0 auto;
+  }
+
+}
+
+
+.search{
+   vertical-align :middle;
+   
+    width:260px;
+    height:35px;
+    padding :0px 5px;
+      border-radius:15px;
+    font-size:18px;
+    color:#424242;
+    font-weight:500;
+    float: right;
+  border: 2px solid rgba(0, 134, 252, 0.7);
+ margin-top: 2.5%;
+   }
+  
+
+.search:focus{
+   outline:none;
+   border: 2px solid white;
+border: 2px solid rgba(0, 134, 252, 0.99);
+}
+
+
+
+
+
+
+/*justification and annonce table */
+.class{
+   width: 920px;
+   min-height: 500px;
+    height: auto;
+  background-color:white;
+ margin:0px 50px 50px 90px ;
+  padding-top:8px;
+  border-radius: 3px;
+   box-shadow: 0 10px 25px rgba(92, 99, 105, 0.2);
+}
+  
+
+table {
+  font-family:   'Quicksand', sans-serif;;
+  border-collapse: collapse;
+width: auto;
+
+margin: auto;
+
+}
+
+td, th {
+  
+
+  text-align: left;
+ 
+}
+
+td{ 
+  font-weight: 400;
+
+}
+.input{
+  width:20%;
+  height:30px;
+}
+th {
+  font-weight: 800;
+
+}
+tr{
+  font-weight: bold;
+ border-bottom: 1px solid rgba(211, 211, 211, 0.97);
+
+}
+a i {
+  margin-left: 2%;
+}
+
+.col button{
+   
+    transition-duration: 0.3s;
+     width: 150px;
+
+    border-radius: 20px;
+    background-color:   rgba(0, 134, 252, 0.99);
+    padding: 4px;
+    font-weight: bold;
+    outline: none;
+    cursor:pointer;color: #ffff;
+    margin:28px 15px 15px 5px;
+    border: none;
+    float: right;
+    margin-left: 2%;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 580;
+    
+    font-size: 17px;
+ 
+}
+
+
+.col button:hover {
+    background-color: transparent;
+    border: 2px solid rgba(0, 134, 252, 0.99);
+    cursor: pointer;
+color: black;
+font-weight: 580;
+
+
+}
+.col1 button{
+   
+    transition-duration: 0.3s;
+     width: 150px;
+
+    border-radius: 20px;
+    background-color:   rgba(0, 134, 252, 0.99);
+    padding: 4px;
+    font-weight: bold;
+    outline: none;
+    cursor:pointer;color: #ffff;
+    margin:28px 15px 15px 5px;
+    border: none;
+    float: right;
+    margin-left: 2%;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 580;
+    
+    font-size: 17px;
+ 
+}
+
+
+.col1 button:hover {
+    background-color: transparent;
+    border: 2px solid rgba(0, 134, 252, 0.99);
+    cursor: pointer;
+color: black;
+font-weight: 580;
+
+
+}
+.col1 table{
+  margin-left: 1%;
+  border-radius: 9px;
+
+}
+.col4 button{
+   
+    transition-duration: 0.3s;
+     width: 150px;
+
+    border-radius: 20px;
+    background-color:   rgba(0, 134, 252, 0.99);
+    padding: 4px;
+    font-weight: bold;
+    outline: none;
+    cursor:pointer;color: #ffff;
+    margin:28px 15px 15px 5px;
+    border: none;
+    float: right;
+    margin-left: 2%;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 580;
+    
+    font-size: 17px;
+ 
+}
+
+
+.col4 button:hover {
+    background-color: transparent;
+    border: 2px solid rgba(0, 134, 252, 0.99);
+    cursor: pointer;
+color: black;
+font-weight: 580;
+
+
+}
+.col4 table{
+  margin-left: 1%;
+ 
+
+}
+a{
+  text-decoration: none;
+}
+
+button a{
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+a:hover{
+  color: black;
+}
+
+
+
+ 
+.card {
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+}
+
+.card {
+position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid rgba(0,0,0,0.125);
+    border-radius: .25rem;
+
+}
+
+
+.card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1rem;
+}
+
+.gutters-sm {
+    margin-right: -8px;
+    margin-left: -8px;
+}
+
+.gutters-sm>.col, .gutters-sm>[class*=col-] {
+    padding-right: 8px;
+    padding-left: 8px;
+}
+.mb-3, .my-3 {
+    margin-bottom: 1rem!important;
+
+}
+
+.bg-gray-300 {
+    background-color: #e2e8f0;
+}
+.h-100 {
+    height: 100%!important;
+}
+.shadow-none {
+    box-shadow: none!important;
+}
+.profileuser{
+  margin-left:180px;
+}
+.option{
+  border:hidden;
+}
+h6{
+  font-size: 15px;
+}

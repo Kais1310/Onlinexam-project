@@ -8,13 +8,20 @@
      <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="style2.css" />
+   
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Text|Work+Sans:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
+    
+  <link rel="stylesheet" href="Management.Account.Style.css" />
+   
      
-    <title>Student List</title>
+    <title>Students List</title>
     
     
 </head>
@@ -26,11 +33,11 @@
             <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i
                     class="fas fa-check"></i><h1><span>e</span>-Exam</h1> <h3>Université Abd ELHamid Mehri</h3></div>
             <div class="list-group list-group-flush my-3">
-                <a href="Home.Admin.jsp" class="list-group-item list-group-item-action bg-transparent second-text active"><i class="fas fa-home"></i> Home</a>
-                <a href="List_Student" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="bi bi-bank2"></i> Management Account</a>        
+                <a href="Home.Admin.jsp" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-home"></i> Home</a>
+                <a href="List_Student" class="list-group-item list-group-item-action bg-transparent second-text active"><i class="bi bi-bank2"></i> Management Account</a>        
                 <a href="List_Plannings" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-edit"></i> Planning Exam</a>
-                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-check"></i> Justifications</a> 
-                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-exclamation"></i> Annonces</a>        
+                <a href="List_Justification" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-check"></i> Justifications</a> 
+                <a href="AddAnnonce" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-exclamation"></i> Annonces</a>        
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-comment-dots me-2"></i>Chat</a>
                
                  
@@ -43,7 +50,7 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
                 <div class="d-flex align-items-center">
                     <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
-                    <h2 class="fs-2 m-0">Admin</h2>
+                    <h2 class="fs-2 m-0"></h2>
                 </div>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -113,16 +120,19 @@
                     </div>
                 </div>
            
-           <a href ="Create_Student"><i class="bi bi-plus-circle"></i>  Add Student</a>
+          
            
                 <div class="row my-5">
-                    <h2>Student list</h2> 
-                    <form action="List_Student" method="get"> <input type="search" placeholder="search.." name="search" class="search"></form><br><br>
+                   
            
                     <div class="col">
+ <h2>Student list</h2> 
+                    <form action="List_Student" method="get"> <input type="search" placeholder="search.." name="search" class="search"></form>
+<button><a href ="Create_Student"><i class="bi bi-plus-circle"></i>  Add Student</a></button>
                         <table class="table bg-white rounded shadow-sm  table-hover">
                             <thead>
                                 <tr>
+                                     <th scope="col">action</th>
                                      <th scope="col" width="50">id</th>
                                      <th scope="col">Firstname</th>
                                      <th scope="col">Lastname</th>
@@ -132,13 +142,14 @@
                                      <th scope="col">department</th>
                                      <th scope="col">Group</th>
                                      <th scope="col">username</th>
-                                     <th scope="col">password</th>
-                                     <th scope="col">action</th>
+                                    
+                                     
                                 </tr>
                             </thead>
                             <tbody>
                                  <c:forEach var="student" items="${listStudent}">
 						             <tr>
+						                <td><a href="Edit_Student?student_id=<c:out value='${student.student_id}' /> "><i class="bi bi-gear"></i></a> / <a href="Delete_Student?student_id=<c:out value='${student.student_id}'/> "> <i class="bi bi-trash3"></i></a></td>
 						              	<th scope="row"><c:out value="${student.student_id}" /></th>
 							            <td><c:out value="${student.firstname}" /></td>
 						             	<td><c:out value="${student.lastname}" /></td>
@@ -148,8 +159,8 @@
 						            	<td><c:out value="${student.department}" /></td>
 						            	<td><c:out value="${student.group}" /></td>
 						            	<td><c:out value="${student.username}" /></td>
-						            	<td><c:out value="${student.password}" /></td>
-						            	<td><a href="Edit_Student?student_id=<c:out value='${student.student_id}' /> "><i class="bi bi-gear"></i></a> / <a href="Delete_Student?student_id=<c:out value='${student.student_id}'/> "> <i class="bi bi-trash3"></i></a></td>
+						            	
+						            	
 						           	   
 						            </tr>
 				            	</c:forEach>

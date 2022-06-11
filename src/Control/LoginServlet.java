@@ -138,11 +138,11 @@ public class LoginServlet extends HttpServlet {
    	   			
    	   	   			        	   // username and password not in any table of actors in the database.
    	   	   			        	   
-   	   	   			               RequestDispatcher dispatcher = request.getRequestDispatcher("Login.Forme.jsp");
+   	   	   			               RequestDispatcher dispatcher = request.getRequestDispatcher("HOME2.jsp");
    				                   dispatcher.include(request, response);
    				                   
-   				                PrintWriter out = response.getWriter();   
-   				                out.print("<center><h2> Incorect username or password !!<h2>");
+   				                   PrintWriter out = response.getWriter();   
+   				                   out.print("<center><h2> Incorect username or password !!<h2>");
    				                
    				               }
 

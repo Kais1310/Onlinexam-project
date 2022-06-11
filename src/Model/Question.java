@@ -53,6 +53,36 @@ public class Question {
 	}
 
 
+	public Question( String module, String content, String choice1, String choice2, String choice3,
+			String choice4, String right_answer, String type, int banque_id, int doctorID) {
+		super();
+		
+		this.module = module;
+		this.content = content;
+		this.choice1 = choice1;
+		this.choice2 = choice2;
+		this.choice3 = choice3;
+		this.choice4 = choice4;
+		this.right_answer = right_answer;
+		this.type = type;
+		this.banque_id = banque_id;
+		this.doctorID = doctorID;
+	}
+
+	public Question(int question_id, String module, String content, String choice1, String choice2, String choice3,
+			String choice4, String right_answer, String type) {
+		super();
+		this.question_id = question_id;
+		this.module = module;
+		this.content = content;
+		this.choice1 = choice1;
+		this.choice2 = choice2;
+		this.choice3 = choice3;
+		this.choice4 = choice4;
+		this.right_answer = right_answer;
+		this.type = type;
+	}
+
 	public int getQuestion_id() {
 		return question_id;
 	}

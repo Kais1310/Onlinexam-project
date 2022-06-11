@@ -8,17 +8,25 @@
    <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="style2.css" />
-    <title>Teacher List</title>
+   
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Text|Work+Sans:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
+   
+   <link rel="stylesheet" href="Management.Account.Style.css" />
+   
+    <title>Doctors List</title>
     
     
 </head>
 
 <body>
+
     <div class="d-flex" id="wrapper">
         <!-- Sidebar -->
         <div class="bg-white" id="sidebar-wrapper">
@@ -28,8 +36,8 @@
                 <a href="Home.Admin.jsp" class="list-group-item list-group-item-action bg-transparent second-text active"><i class="fas fa-home"></i> Home</a>
                 <a href="List_Student" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="bi bi-bank2"></i> Management Account</a>        
                 <a href="List_Plannings" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-edit"></i> Planning Exam</a>
-                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-check"></i> Justifications</a> 
-                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-exclamation"></i> Annonces</a>        
+                <a href="List_Justification" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-check"></i> Justifications</a> 
+                <a href="AddAnnonce" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-exclamation"></i> Annonces</a>        
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-comment-dots me-2"></i>Chat</a>
                
                  
@@ -38,11 +46,12 @@
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
+         
         <div id="page-content-wrapper">
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
                 <div class="d-flex align-items-center">
                     <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
-                    <h2 class="fs-2 m-0">Admin</h2>
+                    <h2 class="fs-2 m-0"></h2>
                 </div>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -68,14 +77,15 @@
                 </div>
             </nav>
             
-
+<div class="all3">
             <div class="container-fluid px-4">
                 <div class="row g-3 my-2">
+
                     <div class="col-md-3">
                         <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                             <div>
                                 <h3 class="fs-2">1000</h3>
-                                <p class="fs-5"><a href="List_Student">Student</a></p>
+                                <p class="fs-5"><a href="List_Student">Students</a></p>
                             </div>
                             
                         </div>
@@ -105,20 +115,32 @@
                         <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                             <div>
                                 <h3 class="fs-2">3</h3>
-                                <p class="fs-5">surveilant</p>
+                                <p class="fs-5">Monitors</p>
                             </div>
                              
                         </div>
                     </div>
                 </div>
            
-           <a href ="Create_Teacher"><i class="bi bi-plus-circle"></i>  Add Teacher</a>
+         
            
+
+
                 <div class="row my-5">
-                    <h2>Teacher list</h2> 
-                    <form action="List_Teachers" method="get"> <input type="search" placeholder="search.." name="search" class="search"></form><br><br>
-           
+                    <h2>Teachers list</h2>
+
+                    
+
                     <div class="col">
+
+                    <form action="List_Teachers" method="get" >  <input type="search" placeholder="search.." name="search" class="search"  >
+                    </form>
+                     
+                        <button>
+                    <a href ="Create_Teacher"><i class="bi bi-plus-circle"></i>  Add Teacher</a></button>
+
+  
+  
                         <table class="table bg-white rounded shadow-sm  table-hover">
                             <thead>
                                 <tr>
@@ -154,7 +176,7 @@
 
             </div>
         </div>
-    </div>
+    </div></div>
     <!-- /#page-content-wrapper -->
     
  

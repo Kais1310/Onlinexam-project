@@ -13,8 +13,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="style2.css" />
-     <link rel="stylesheet" href="question.css" />
+   
 
  
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -25,7 +24,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link href="https://fonts.googleapis.com/css?family=Crimson+Text|Work+Sans:400,700" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
-   
+    <link rel="stylesheet" href="style2.css" />
+     <link rel="stylesheet" href="question.css" />
+
 </head>
 <body>
  <div class="d-flex" id="wrapper">
@@ -35,10 +36,10 @@
             <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i
                     class="fas fa-check"></i><h1><span>e</span>-Exam</h1> <h3>Université Abd ELHamid Mehri</h3></div>
             <div class="list-group list-group-flush my-3">
-                <a href="Home.Doctor.jsp" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                <a href="Home.Doctor.jsp" class="list-group-item list-group-item-action bg-transparent second-text active"><i
                         class="fas fa-home"></i> Home</a>
-                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="bi bi-bank2"></i>  Bank</a>        
-                <a href="List_Exams?doc_id=<c:out value="${doctor.doctor_id}" />" class="list-group-item list-group-item-action bg-transparent second-text active"><i
+                <a href="List_Questions_banque?module=<c:out value="${doctor.module}" />" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="bi bi-bank2"></i>  Bank</a>        
+                <a href="List_Exams?doc_id=<c:out value="${doctor.doctor_id}" />" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-list"></i> Exams</a>
                  <a href="Createxam?doctor_id=<c:out value="${doctor.doctor_id}" />" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-edit"></i> Create exam</a>
@@ -88,15 +89,15 @@
   
               <c:if test="${ListExams.size() == 0}">
                  <div class="question">
-                   <h2 style="text-align: center;">Your list of Exams is empty </h2><br>
-                   <p>you have non exam created for now, you want to create one ? <a href="Createxam?doctor_id=<c:out value="${doctor.doctor_id}" />">click ici</a></p>
+                   <h2 style="text-align: center;">Your Exams list  is empty </h2>
+                   <p>you have no exam created yet, you want to create one ?<br> <a href="Createxam?doctor_id=<c:out value="${doctor.doctor_id}" />">click here</a></p>
                  </div>
               </c:if>    
            
-              <c:if test="${ListExams.size() != 0}">         
-              <div class="table">
+              <c:if test="${ListExams.size() != 0}">         <br>
+              <div class="table3">
                     <h2>Exams list</h2> 
-                    
+                    <br>
                     <div class="col">
                         <table class="table bg-white rounded shadow-sm  table-hover">
                             <thead>
@@ -108,7 +109,7 @@
                                     <th scope="col">Date</th>
                                      <th scope="col">Duration</th>
                                      <th scope="col">Type</th>
-                                     <th scope="col" width="20">nbrQ</th>
+                                     <th scope="col" width="20">N°Qst</th>
                                     
                                      <th scope="col"></th>
                                      <th scope="col">action</th>
@@ -117,19 +118,19 @@
                             <tbody>
                             
                                  <c:forEach var="exam" items="${ListExams}">
-						             <tr>
-						                <th scope="row"><c:out value="${exam.exam_id}" /></th>
-						              	<td><c:out value="${exam.module}" /></td>			              	
-							            <td><c:out value="${exam.level}" /></td>	
-							            <td><c:out value="${exam.speciality}" /></td>
-							            <td><c:out value="${exam.date}" /></td>	
-							            <td><c:out value="${exam.duration}" /></td>
-							            <td><c:out value="${exam.type}" /></td>	
-							            <td><c:out value="${exam.nbr_questions}" /></td>
-							            <td><a href="Show_Topic?exam_id=<c:out value="${exam.exam_id}" />"><i class="bi bi-eye"></i></a></td>		
-							            <td><a href="Edit_Exam?exam_id=<c:out value='${exam.exam_id}' /> "><i class="bi bi-gear"></i></a> / <a href="Delete_Exam?exam_id=<c:out value='${exam.exam_id}'/> "> <i class="bi bi-trash3"></i></a></td>	
-							        </tr>
-				            	</c:forEach>
+                         <tr>
+                            <th scope="row"><c:out value="${exam.exam_id}" /></th>
+                            <td><c:out value="${exam.module}" /></td>                     
+                          <td><c:out value="${exam.level}" /></td>  
+                          <td><c:out value="${exam.speciality}" /></td>
+                          <td><c:out value="${exam.date}" /></td> 
+                          <td><c:out value="${exam.duration}" /></td>
+                          <td><c:out value="${exam.type}" /></td> 
+                          <td><c:out value="${exam.nbr_questions}" /></td>
+                          <td><a href="Show_Topic?exam_id=<c:out value="${exam.exam_id}" />"><i class="bi bi-eye"></i></a></td>   
+                          <td><a href="Edit_Exam?exam_id=<c:out value='${exam.exam_id}' /> "><i class="bi bi-gear"></i></a> / <a href="Delete_Exam?exam_id=<c:out value='${exam.exam_id}'/> "> <i class="bi bi-trash3"></i></a></td>  
+                      </tr>
+                      </c:forEach>
                               
                             </tbody>
                         </table>

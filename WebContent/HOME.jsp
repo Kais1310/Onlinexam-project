@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+ <%@ taglib   uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <html>
 <head>
   <title>homepage</title>
@@ -24,8 +25,8 @@
     <header id="header">
      <h2 class="logo">e<span>_Exam</span></h2>
       <ul id="menu">
-        <li><a href="acceuil.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
+        <li><a href="HOME.jsp">Home</a></li>
+        <li><a href="AboutUs.jsp">About Us</a></li>
         <li><a href="#">Services</a></li>
         <li><a href="#">Skills</a></li>
         <li><a href="#">Contact Us</a></li>
@@ -54,6 +55,7 @@
 <button type="submit" class="bttn" id="bttn">login </button> 
 </div>
    </div>
+  
     <div class="login"> 
    
 
@@ -67,6 +69,7 @@
  <input type="text" name="username" placeholder="Username"  required="required"/> 
  <input type=password name="password" placeholder="Password" required="required"/> 
  <button type="submit" class="btn">login  </button> 
+ 
 </form>
  </div>
   
@@ -82,11 +85,10 @@
       document.querySelector(".bttn").style.display="flex";
     })
   </script> 
-
+  
    </div>
      </div>
-  
-
+     
   </div>
 
   <!----About section start---->

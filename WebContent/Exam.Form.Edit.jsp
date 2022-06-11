@@ -35,8 +35,8 @@
             <div class="list-group list-group-flush my-3">
                 <a href="Home.Doctor.jsp" class="list-group-item list-group-item-action bg-transparent second-text active"><i
                         class="fas fa-home"></i> Home</a>
-                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="bi bi-bank2"></i>  Bank</a>        
-                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                <a href="List_Questions_banque?module=<c:out value="${doctor.module}" />" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="bi bi-bank2"></i>  Bank</a>        
+                <a href="List_Exams?doc_id=<c:out value="${doctor.doctor_id}" />" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-list"></i> Exams</a>
                  <a href="Createxam?doctor_id=<c:out value="${doctor.doctor_id}" />" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-edit"></i> Create exam</a>
@@ -84,7 +84,7 @@
               <div class="Formule"> 
                   <form  action="Update_Exam" method="post">
                         <h2>Update Exam</h2>
-                 <input type="hidden" name="exam_id" value="<c:out value="${exam.date}" />">
+                 <input type="hidden" name="exam_id" value="<c:out value="${exam.exam_id}" />">
                  
                  <div class="first">
                      <label>Module</label>
@@ -149,7 +149,7 @@
                 
                       </div>
                       <br>
-                    <input type="hidden"  name="doc_id" value="<c:out value="${exam.doc_id}" />"  >   
+                    <input type="text"  name="doc_id" value="<c:out value="${exam.doc_id}" />"  >   
                   <button type="submit" class="btn ">Update</button> 
         
                 </form>

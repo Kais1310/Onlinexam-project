@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Home Doctor</title>
+<title>bank</title>
   <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -79,9 +79,9 @@
                 </div>
             </nav>
            
-           
+           <button><a href ="Add_Question"><i class="bi bi-plus-circle"></i>  Add Question</a></button>
                   
-             <div class="table">
+             <div class="table2">
                     <h2>Questions list</h2> 
                     
                     <div class="col">

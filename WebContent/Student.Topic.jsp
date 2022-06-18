@@ -11,13 +11,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://fonts.googleapis.com/css?family=Crimson+Text|Work+Sans:400,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
    
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+  
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://fonts.googleapis.com/css?family=Crimson+Text|Work+Sans:400,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
+
     <link rel="stylesheet" href="style2.css" />
     <link rel="stylesheet" href="question.css" />
    
@@ -29,8 +33,8 @@
             <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i
                     class="fas fa-check"></i><h5><span>e</span>-Exam</h5> <h7>Universite Abd ELHamid Mehri</h7>
                     <br>
-  <span style="color: white;">
-<div id="on" class="hours">12:</div> 
+  <span style="color: white;
+"><div id="on" class="hours">12:</div> 
 <div id="on" class="minutes">12:</div> 
 <div id="on" class="seconds">12</div> 
 
@@ -102,7 +106,7 @@ setInterval(function(){
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle second-text fw-bold" href="#" id="navbarDropdown"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-user me-2"></i> ${student.firstname} ${student.lastname} 
+                                <i class="fas fa-user me-2"></i> ${student.username} ${student.lastname} 
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#">Profile</a></li>
@@ -116,10 +120,8 @@ setInterval(function(){
             
            
             <!-- Topic questions -->
-            
+            <h8>Questions</h8>
             <form action="AddAnswers" method="post">
-        <input type="hidden" name="examID" value="<c:out value="${exam.exam_id}" />">
-         <input type="hidden" name="studentID" value="<c:out value="${student.student_id}" />">
         
                   <c:forEach var="topic" items="${TopicQuestions}">
                      <div class="question">

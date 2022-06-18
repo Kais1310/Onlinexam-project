@@ -34,17 +34,16 @@
 <body>
    <div class="d-flex" id="wrapper">
         <!-- Sidebar -->
-       <div class="bg-white" id="sidebar-wrapper">
+        <div class="bg-white" id="sidebar-wrapper">
             <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i
                     class="fas fa-check"></i><h1><span>e</span>-Exam</h1> <h3>Université Abd ELHamid Mehri</h3></div>
             <div class="list-group list-group-flush my-3">
-                <a href="Home.Admin.jsp" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-home"></i> Home</a>
-                <a href="List_Student" class="list-group-item list-group-item-action bg-transparent second-text active"><i class="bi bi-bank2"></i> Management Account</a>        
+                <a href="Home.Admin.jsp" class="list-group-item list-group-item-action bg-transparent second-text active"><i class="fas fa-home"></i> Home</a>
+                <a href="List_Student" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="bi bi-bank2"></i> Management Account</a>        
                 <a href="List_Plannings" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-edit"></i> Planning Exam</a>
                 <a href="List_Justification" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-check"></i> Justifications</a> 
                 <a href="AddAnnonce" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-exclamation"></i> Annonces</a>        
-                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-comment-dots me-2"></i>Chat</a>
-               
+                
                  
             </div>
         </div>
@@ -55,7 +54,7 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
                 <div class="d-flex align-items-center">
                     <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
-                    <h2 class="fs-2 m-0"></h2>
+                    <h2 class="fs-2 m-0">Admin</h2>
                 </div>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"

@@ -42,9 +42,9 @@ public class List_Questions extends HttpServlet {
 				
 				e.printStackTrace();
 			}
-		
-		
-		
+			
+			Object exam = request.getAttribute("exam");
+			request.setAttribute("exam", exam);
 		request.setAttribute("ListQuestions", ListQuestions);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("Exam.questions.jsp");
 		dispatcher.forward(request, response);

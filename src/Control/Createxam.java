@@ -24,8 +24,6 @@ public class Createxam extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-	 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("Exam.Form.jsp");
 		dispatcher.include(request, response);
 	}
@@ -36,9 +34,10 @@ public class Createxam extends HttpServlet {
 		String module = request.getParameter("module");
 		String level = request.getParameter("level");
 		String speciality = request.getParameter("speciality");
+		String type = request.getParameter("type");
 		String date = request.getParameter("date");
 		String duration = request.getParameter("duration");
-		String type = request.getParameter("type");
+		String state = request.getParameter("state");
         int nbr_questions=Integer.parseInt(request.getParameter("nbr_questions"));  
         int doc_id=Integer.parseInt(request.getParameter("doc_id"));  
 		
@@ -46,7 +45,7 @@ public class Createxam extends HttpServlet {
 		
 		 
 		 
-		Exam exam = new Exam(module,level,speciality,date,duration,type,nbr_questions,doc_id);
+		Exam exam = new Exam(module,level,speciality,type,date,duration,nbr_questions,state,doc_id);
 		
 		DAO dao = new DAO();
 		 
@@ -58,7 +57,7 @@ public class Createxam extends HttpServlet {
 				}
 			 
 				try {
-				exam = dao.FindExamId(module, level, speciality, date, duration, type, nbr_questions, doc_id);
+				exam = dao.FindExamId(module, level, speciality, type, date, duration, nbr_questions, state, doc_id);
 				} catch (InstantiationException | IllegalAccessException e) {
 					// 
 					e.printStackTrace();

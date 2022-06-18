@@ -12,12 +12,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="style2.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css?family=Crimson+Text|Work+Sans:400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
+    <link rel="stylesheet" href="session.css" />
+     <link rel="stylesheet" href="session2.css" />
    
 </head>
 <body>
@@ -35,15 +36,13 @@
                         class="fas fa-list"></i> Exams</a>
                  <a href="Createxam?doctor_id=<c:out value="${doctor.doctor_id}" />" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-edit"></i> Create exam</a>
-                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                        class="fas fa-check"></i> Notes</a> 
-                        <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                        class="fas fa-exclamation"></i> Reclamations</a>        
+                 <a href="GetSession?doctorID=<c:out value="${doctor.doctor_id}" />" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                        class="fas fa-comment-dots me-2"></i>Session</a>
+                        <a href="GetExams_List?module=<c:out value="${doctor.module}" />" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                         class="fas fa-check"></i> Answers</a>      
+                 <a href="Get_Reclamations?module=<c:out value="${doctor.module}" />" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                        class="fas fa-exclamation"></i> Reclamations</a>          
                 
-                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                        class="fas fa-comment-dots me-2"></i>Chat</a>
-               
-                 
             </div>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -79,18 +78,18 @@
                 </div>
             </nav>
            
-           <button><a href ="Add_Question"><i class="bi bi-plus-circle"></i>  Add Question</a></button>
-                  
-             <div class="table2">
+           <button class="btn6"><a href ="Add_Question"><i class="bi bi-plus-circle"></i>Add Question</a></button>
+                  <br> <br> <br>
+             <div class="table4">
                     <h2>Questions list</h2> 
-                    
+                    <br>
                     <div class="col">
                      
                      
                         <table class="table bg-white rounded shadow-sm  table-hover">
                             <thead>
                                 <tr>
-                                    <th scope="col" width="50">id</th>
+                                    <th scope="col" width="50" style="border:none;">id</th>
                                     <th scope="col">Questions</th>
                                     <th scope="col"></th>
                                     <th scope="col"></th>

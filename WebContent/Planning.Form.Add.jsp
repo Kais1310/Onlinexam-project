@@ -89,15 +89,14 @@
                      <label>Date<h4>*</h4></label>
                           <input type="datetime-local"  name="date"  required="required">
                          <br>    
-                         <label>Salle<h4>*</h4></label>
-                     <input type="text" name="salle" required="required">
+                         
                    
                         <br><br>
 
                         <br>
                        </div>
                        <div class="second7">
-                       <br>
+                       <br><br><br>
                      <strong> Level </strong><br><br>
                          <select class="role" name="level" required="required"  > 
                                <option></option>

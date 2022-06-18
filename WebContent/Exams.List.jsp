@@ -43,14 +43,12 @@
                         class="fas fa-list"></i> Exams</a>
                  <a href="Createxam?doctor_id=<c:out value="${doctor.doctor_id}" />" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-edit"></i> Create exam</a>
-                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                        class="fas fa-check"></i> Notes</a> 
-                        <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                        class="fas fa-exclamation"></i> Reclamations</a>        
-                
-                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                        class="fas fa-comment-dots me-2"></i>Chat</a>
-               
+                 <a href="GetSession?doctorID=<c:out value="${doctor.doctor_id}" />" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                        class="fas fa-comment-dots me-2"></i>Session</a>
+                        <a href="GetExams_List?module=<c:out value="${doctor.module}" />" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                         class="fas fa-check"></i> Answers</a>      
+                 <a href="Get_Reclamations?module=<c:out value="${doctor.module}" />" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                        class="fas fa-exclamation"></i> Reclamations</a>          
                  
             </div>
         </div>
@@ -110,7 +108,6 @@
                                      <th scope="col">Duration</th>
                                      <th scope="col">Type</th>
                                      <th scope="col" width="20">N°Qst</th>
-                                    
                                      <th scope="col"></th>
                                      <th scope="col">action</th>
                                 </tr>

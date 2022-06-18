@@ -125,14 +125,12 @@
                    </select>
                    <br><br>
                    <strong> Department</strong><br><br>
-                    <select class="role" name="speciality" >
+                    <select class="role" name="department" >
                         
                         <option><c:out value="${student.department}"/></option>
                         <option>MI</option>
-                        <option>GL</option>
-                        <option>TI</option>
-                        <option>SI</option>
-                        <option>SCI</option>
+                        <option>TLSI</option>
+                        <option>IFA</option>
                         <option>STIW</option>
                    </select>
                    <br><br>

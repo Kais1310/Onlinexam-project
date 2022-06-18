@@ -13,32 +13,20 @@ import javax.servlet.http.HttpServletResponse;
 import Model.DAO;
 import Model.Teacher;
 
-/**
- * Servlet implementation class Create_Teacher
- */
 @WebServlet("/Create_Teacher")
 public class Create_Teacher extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+   
     public Create_Teacher() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 RequestDispatcher dispatcher = request.getRequestDispatcher("Teacher.Form.Add.jsp");
 			dispatcher.include(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String firstname = request.getParameter("firstname");	
         String lastname = request.getParameter("lastname");
@@ -65,7 +53,7 @@ public class Create_Teacher extends HttpServlet {
 		    out.print("<p>Teacher account added successfully!</p>");  
 		   		    
             
-		    RequestDispatcher dispatcher = request.getRequestDispatcher("List_Teachers");
+		    RequestDispatcher dispatcher = request.getRequestDispatcher("Teacher.Form.Add.jsp");
 			dispatcher.include(request, response);
 	}
 

@@ -40,13 +40,15 @@
                         class="fas fa-list"></i> Exams</a>
                  <a href="Createxam?doctor_id=<c:out value="${doctor.doctor_id}" />" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-edit"></i> Create exam</a>
-                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                        class="fas fa-check"></i> Notes</a> 
-                        <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                        class="fas fa-exclamation"></i> Reclamations</a>        
+                 <a href="GetSession?doctorID=<c:out value="${doctor.doctor_id}" />" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                        class="fas fa-comment-dots me-2"></i>Session</a>
+                        <a href="GetExams_List?module=<c:out value="${doctor.module}" />" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                         class="fas fa-check"></i> Answers</a>      
+                 <a href="Get_Reclamations?module=<c:out value="${doctor.module}" />" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                        class="fas fa-exclamation"></i> Reclamations</a>          
                 
-                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                        class="fas fa-comment-dots me-2"></i>Chat</a>
+                <a href="GetSession?doctorID=<c:out value="${doctor.doctor_id}" />" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                        class="fas fa-comment-dots me-2"></i>Session</a>
                
                  
             </div>
@@ -81,15 +83,16 @@
                 </div>
             </nav>
             
-              <div class="Formule"> 
-                  <form  action="Update_Exam" method="post">
+       <div class="Formule"> 
+          <form  action="Update_Exam" method="post">
+                  
                         <h2>Update Exam</h2>
                  <input type="hidden" name="exam_id" value="<c:out value="${exam.exam_id}" />">
                  
                  <div class="first">
                      <label>Module</label>
                           <select class="role" name="module" required="required"  > 
-                               <option ><c:out value="${doctor.module}" /></option>                        
+                               <option><c:out value="${doctor.module}" /></option>                        
                          </select>
                          <br>
                      <label>Date</label>
@@ -149,7 +152,8 @@
                 
                       </div>
                       <br>
-                    <input type="text"  name="doc_id" value="<c:out value="${exam.doc_id}" />"  >   
+                    <input type="hidden" name="state" value="<c:out value="${exam.state}" />">  
+                    <input type="hidden"  name="doc_id" value="<c:out value="${exam.doc_id}" />"  >   
                   <button type="submit" class="btn ">Update</button> 
         
                 </form>

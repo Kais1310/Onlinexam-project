@@ -56,7 +56,7 @@ public class Create_Doctor extends HttpServlet {
 			    out.print("<p>Doctor account added successfully!</p>");  
 			   		    
 	            
-			    RequestDispatcher dispatcher = request.getRequestDispatcher("List_Doctors");
+			    RequestDispatcher dispatcher = request.getRequestDispatcher("Doctor.Form.Add.jsp");
 				dispatcher.include(request, response);
 
 			

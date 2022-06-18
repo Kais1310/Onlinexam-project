@@ -4,6 +4,11 @@
   --second-text-color: #bbbec5;
   --second-bg-color: #c1efde;
 }
+h2{
+  text-align: center;
+    padding-top: 15px;
+    color: rgba(0, 134, 252, 0.99);
+}
  h10{
         font-size: 10px;
         color: black;
@@ -15,7 +20,7 @@
        font-size: 40px;
        font-weight: 500;
     }
-h4{
+ h4{
         font-size: 22px;
 color:red;
     } 
@@ -33,7 +38,7 @@ span{
     padding-top: 15px;
     color: rgba(0, 134, 252, 0.99);
 }
- h3{
+ .d-flex h3{
         font-size: 10px;
         color: black;
         text-align: center;
@@ -182,9 +187,10 @@ border: 2px solid rgba(0, 134, 252, 0.99);
   
 
 table {
-  font-family:   sans-serif;;
-  border-collapse: collapse;
+  font-family:   sans-serif;
+  border:none;
 width: auto;
+
 
 margin: auto;
 
@@ -205,12 +211,18 @@ width: auto;
 margin-left: 1%;
 
 }
+.table4 {
+  font-family:   sans-serif;;
+ border:none;
+width: auto;
+
+margin-left: 1%;
+
+}
 
 td, th {
-  
-border:1px  solid rgba(0,0,0,0.1);
+  border:none;
   text-align: left;
- 
 }
 td{ 
   font-weight: 400;
@@ -220,10 +232,39 @@ td{
   height:30px;
 }
 th {
-  font-weight: 800;
+  font-weight: 600;
 }
+thead tr{
+    background-color: rgb(236, 239, 241);
 
+}
+button a{
+  color: white;
+  text-decoration: none;
+}
+button a:hover{
+  color: black;
+}
+.btn4{
 
+    transition-duration: 0.3s;
+     width: 150px;
+
+    border-radius: 20px;
+    background-color:   rgba(0, 134, 252, 0.99);
+    padding: 4px;
+    font-weight: bold;
+    outline: none;
+    cursor:pointer;color: #ffff;
+    margin:28px 15px 15px 5px;
+    border: none;
+    float: right;
+    margin-left: 2%;
+    font-family:  sans-serif;
+    font-weight: 580;
+    
+    font-size: 17px;
+}
 
 .col button{
    
@@ -245,6 +286,14 @@ th {
     
     font-size: 17px;
  
+}
+.btn4:hover{
+   background-color: transparent;
+    border: 2px solid rgba(0, 134, 252, 0.99);
+    cursor: pointer;
+color: black;
+font-weight: 580;
+
 }
 
 

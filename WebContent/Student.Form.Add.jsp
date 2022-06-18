@@ -90,7 +90,8 @@
                 <input type="text"   name="lastname" required="required"/>
             <br>
             
-                <label>Email <h4>*</h4></label>                 <input type="text"   name="email" required="required"/>
+                <label>Email <h4>*</h4></label>               
+                  <input type="text"   name="email" required="required"/>
             <br>
              <label>Username <h4>*</h4></label> 
                  <input type="text"  name="username" required="required"/>

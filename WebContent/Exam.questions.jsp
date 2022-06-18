@@ -89,7 +89,7 @@
                     <div class="col">
                      <form action="CreateTopicQsts" method="post">
                      
-                     <input type=hidden name="Exm_id" value="<c:out value="${exam.exam_id}" />">
+                     <input type="hidden" name="Exm_id" value="<c:out value="${exam.exam_id}" />">
                      
                         <table class="table bg-white rounded shadow-sm  table-hover">
                             <thead>

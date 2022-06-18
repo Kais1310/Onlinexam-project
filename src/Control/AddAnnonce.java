@@ -16,15 +16,13 @@ import Model.DAO;
 @WebServlet("/AddAnnonce")
 public class AddAnnonce extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-   
+  
     public AddAnnonce() {
         super();
     }
-
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("AnnonceAdd.jsp");
-	     dispatcher.include(request, response);
+	     dispatcher.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -42,13 +40,10 @@ public class AddAnnonce extends HttpServlet {
 		} catch (InstantiationException | IllegalAccessException e) {
 			e.printStackTrace();
               
-			PrintWriter out = response.getWriter();
-		     out.print("<p>Annonce added successfully!</p>"); 
 		     
-		     RequestDispatcher dispatcher = request.getRequestDispatcher("AnnonceAdd.jsp");
-		     dispatcher.include(request, response);
+		     RequestDispatcher dispatcher = request.getRequestDispatcher("AnnonceAdded.jsp");
+		     dispatcher.forward(request, response);
 		}
 
 	}
-
 }
